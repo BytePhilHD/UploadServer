@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<body style="background-color:lightslategray;"> </body>
 <head>
     <meta charset="UTF-8">
     <title>TestServer</title>
@@ -9,7 +10,35 @@
 <p>---</p>
 <p>Hallöle</p>
 <p>Das is eine TestSeite! </p>
-<p>Antwort: </p><p id="webanswer"></p>
+<p>Für weitere Infos gebe das Passwort ein!</p>
+<p>.</p>
 
+<label for="pw">Passwort:</label>
+<input type="text"
+       id="pw" name="pw"><br><br>
+
+<button onclick="manageInput()" class="btn btn-primary" type="button" style="margin: 4px;">Senden </button>
+
+<p id="input"></p>
+<script>
+    window.onload = setupWebSocket;
+    let ws;
+    const test = true;
+
+    function manageInput() {
+        let input = document.getElementById("pw").value;
+        document.getElementById('pw').value = '';
+        console.log(input);
+        ws.send("PASSWORD: " + input);
+    }
+
+    function setupWebSocket() {
+        let i = 80;
+        if (location.port != 0) {
+            i = location.port;
+        }
+        ws = new WebSocket("ws://" + location.hostname + ":" + i + "/websockets");
+    }
+</script>
 </body>
 </html>
