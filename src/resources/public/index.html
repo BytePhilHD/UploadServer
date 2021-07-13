@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<body style="background-color:lightslategray;"> </body>
+<html lang="en" style="background-color:lightslategray;">
+<body style="background-color:lightslategray;"></body>
 <head>
     <meta charset="UTF-8">
     <title>TestServer</title>
@@ -17,9 +17,11 @@
 <input type="text"
        id="pw" name="pw"><br><br>
 
-<button onclick="manageInput()" class="btn btn-primary" type="button" style="margin: 4px;">Senden </button>
+<button onclick="manageInput()" class="btn btn-primary" type="button" style="margin: 4px;">Senden</button>
 
 <p id="input"></p>
+<p>.</p>
+
 <script>
     window.onload = setupWebSocket;
     let ws;
@@ -38,6 +40,24 @@
             i = location.port;
         }
         ws = new WebSocket("ws://" + location.hostname + ":" + i + "/websockets");
+
+        ws.onclose = closeEvent => {
+            setupWebSocket();
+        }
+        ws.onerror = errorEvent => {
+            document.getElementById("input").innerHTML = "Server is not responding! Please try again!";
+        }
+        ws.onmessage = messageEvent => {
+            var wsinput = messageEvent.data;
+            console.log(wsinput);
+            if (wsinput.includes("CORRECT")) {
+                document.getElementById("input").innerHTML = "Correct password!";
+                window.location.href = location + "home";
+
+            } else if (wsinput.includes("WRONG")) {
+                document.getElementById("input").innerHTML = "Wrong password! Please try again!";
+            }
+        }
     }
 </script>
 </body>

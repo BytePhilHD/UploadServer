@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <p>Login Site</p>
+</body>
+<script>
+    window.onload = setupWebSocket;
+    let ws;
+
+    function setupWebSocket() {
+        let i = 80;
+        if (location.port != 0) {
+            i = location.port;
+        }
+        ws = new WebSocket("ws://" + location.hostname.replace("home", "") + ":" + i + "/login");
+
+        ws.onclose = closeEvent => {
+            setupWebSocket();
+        }
+        ws.onerror = errorEvent => {
+
+        }
+        ws.onmessage = messageEvent => {
+            var wsinput = messageEvent.data;
+            if (wsinput.includes("CLOSE")) {
+                const location1 = location.toString();
+                const loc = location1.replace("home", "");
+                console.log(location1);
+                window.location.href = loc + "logout";
+            }
+        }
+    }
+</script>
+</html>
