@@ -6,6 +6,7 @@ import de.bytephil.utils.Console;
 import io.javalin.Javalin;
 
 import java.awt.*;
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 
 public class Main {
@@ -41,7 +42,7 @@ public class Main {
                 if (message.contains("PASSWORD")) {
                     message = message.replace("PASSWORD: ", "");
                     if (message.equalsIgnoreCase(password)) {
-                        ctx.send("CORRECT");
+                        ctx.send("CORRECT " + ctx.getSessionId());
                         logtIn.add(ctx.getSessionId());
                         System.out.println("Correct password typed!");
                     }
@@ -55,8 +56,21 @@ public class Main {
 
         app.ws("/login", ws -> {
             ws.onConnect(ctx -> {
-                if (!logtIn.contains(ctx.getSessionId())) {
+                /*if (!logtIn.contains(ctx.session.getRemoteAddress())) {
                     ctx.send("CLOSE");
+                } */
+            });
+            ws.onMessage(ctx -> {
+                String message = ctx.message();
+                if (message.contains("LOGIN")) {
+                    message = message.replace("LOGIN: ", "").replace("?", "");
+
+                    if (logtIn.contains(message)) {
+                        logtIn.add(ctx.getSessionId());
+                        logtIn.remove(message);
+                    } else {
+                        ctx.send("CLOSE");
+                    }
                 }
             });
         });

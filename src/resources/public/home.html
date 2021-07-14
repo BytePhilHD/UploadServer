@@ -16,21 +16,22 @@
         if (location.port != 0) {
             i = location.port;
         }
-        ws = new WebSocket("ws://" + location.hostname.replace("home", "") + ":" + i + "/login");
+        ws = new WebSocket("ws://" + location.host.replace("home", "") + "/login");
 
+        ws.onopen = openEvent => {
+            ws.send("LOGIN: " + location.search);
+        }
         ws.onclose = closeEvent => {
             setupWebSocket();
         }
         ws.onerror = errorEvent => {
-
         }
         ws.onmessage = messageEvent => {
             var wsinput = messageEvent.data;
             if (wsinput.includes("CLOSE")) {
                 const location1 = location.toString();
-                const loc = location1.replace("home", "");
-                console.log(location1);
-                window.location.href = loc + "logout";
+                const loc = location1.replace("home", "logout");
+                window.location.href = loc;
             }
         }
     }

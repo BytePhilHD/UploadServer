@@ -39,6 +39,9 @@
         if (location.port != 0) {
             i = location.port;
         }
+        if (location.search != 0) {
+            window.location.href = location.protocol + "//" + location.host;
+        }
         ws = new WebSocket("ws://" + location.hostname + ":" + i + "/websockets");
 
         ws.onclose = closeEvent => {
@@ -51,8 +54,9 @@
             var wsinput = messageEvent.data;
             console.log(wsinput);
             if (wsinput.includes("CORRECT")) {
+                wsinput = wsinput.replace("CORRECT ", "");
                 document.getElementById("input").innerHTML = "Correct password!";
-                window.location.href = location + "home";
+                window.location.href = location + "home?" + wsinput;
 
             } else if (wsinput.includes("WRONG")) {
                 document.getElementById("input").innerHTML = "Wrong password! Please try again!";
