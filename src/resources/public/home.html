@@ -5,11 +5,61 @@
     <title>Title</title>
 </head>
 <body>
- <p>Login Site</p>
+<p>Login Site</p>
+
+<label for="upload">Choose a file to upload:</label>
+
+<input type="file"
+       id="upload" name="avatar">
+
+<button onclick="manageInput()" class="btn btn-primary" type="button" style="margin: 4px;">Senden</button>
+
 </body>
 <script>
     window.onload = setupWebSocket;
     let ws;
+
+    function manageInput() {
+        const urlCreator = window.URL || window.webkitURL;
+        let myFile = document.getElementById('upload').files[0];
+        var imageUrl = urlCreator.createObjectURL(document.getElementById('upload').files[0]);
+
+        ws.send("FILE: "+ imageUrl);
+        console.log("File send! " + imageUrl);
+    }
+
+    async function getByteArray() {
+        //Get file from your input element
+        let myFile = document.getElementById('upload').files[0];
+
+        //Wait for the file to be converted to a byteArray
+        let byteArray = await fileToByteArray(myFile);
+
+        //Do something with the byteArray
+        console.log(byteArray);
+    }
+
+    function fileToByteArray(file) {
+        return new Promise((resolve, reject) => {
+            try {
+                let reader = new FileReader();
+                let fileByteArray = [];
+                reader.readAsArrayBuffer(file);
+                reader.onloadend = (evt) => {
+                    if (evt.target.readyState == FileReader.DONE) {
+                        let arrayBuffer = evt.target.result,
+                            array = new Uint8Array(arrayBuffer);
+                        for (byte of array) {
+                            fileByteArray.push(byte);
+                        }
+                    }
+                    resolve(fileByteArray);
+                }
+            } catch (e) {
+                reject(e);
+            }
+        })
+    }
 
     function setupWebSocket() {
         let i = 80;
@@ -25,6 +75,8 @@
             setupWebSocket();
         }
         ws.onerror = errorEvent => {
+            setupWebSocket();
+            console.log("An error occurred!");
         }
         ws.onmessage = messageEvent => {
             var wsinput = messageEvent.data;
