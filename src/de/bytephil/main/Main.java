@@ -34,7 +34,7 @@ public class Main {
 
         app.ws("/websockets", ws -> {
             ws.onConnect(ctx -> {
-                Console.printout("Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
+                Console.printout("[/websockets] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
                 clients.add(ctx.getSessionId());
                /* if (!thread.isAlive()) {
                     thread.stop();
@@ -44,7 +44,7 @@ public class Main {
                 */
             });
             ws.onClose(ctx -> {
-                Console.printout("Client disconnected (Session-ID: " + ctx.getSessionId() + ")", MessageType.INFO);
+                Console.printout("[/websockets] Client disconnected (Session-ID: " + ctx.getSessionId() + ")", MessageType.INFO);
                 clients.remove(ctx.getSessionId());
                 /*if (clients.size() == 0 && thread.isAlive()) {
                     thread.stop();
@@ -71,7 +71,10 @@ public class Main {
 
         app.ws("/login", ws -> {
             ws.onConnect(ctx -> {
-
+                Console.printout("[/login] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
+            });
+            ws.onClose(ctx -> {
+                Console.printout("[/login] Client disconnected (Session-ID: " + ctx.getSessionId() + ")", MessageType.INFO);
             });
             ws.onMessage(ctx -> {
                 String message = ctx.message();

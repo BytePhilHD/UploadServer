@@ -31,7 +31,6 @@
     function manageInput() {
         let input = document.getElementById("pw").value;
         document.getElementById('pw').value = '';
-        console.log(input);
         ws.send("PASSWORD: " + input);
     }
 
@@ -53,7 +52,6 @@
         }
         ws.onmessage = messageEvent => {
             var wsinput = messageEvent.data;
-            console.log(wsinput);
             if (wsinput.includes("CORRECT")) {
                 wsinput = wsinput.replace("CORRECT ", "");
                 document.getElementById("input").innerHTML = "Correct password!";

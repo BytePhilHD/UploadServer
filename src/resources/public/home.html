@@ -28,39 +28,6 @@
         console.log("File send! " + imageUrl);
     }
 
-    async function getByteArray() {
-        //Get file from your input element
-        let myFile = document.getElementById('upload').files[0];
-
-        //Wait for the file to be converted to a byteArray
-        let byteArray = await fileToByteArray(myFile);
-
-        //Do something with the byteArray
-        console.log(byteArray);
-    }
-
-    function fileToByteArray(file) {
-        return new Promise((resolve, reject) => {
-            try {
-                let reader = new FileReader();
-                let fileByteArray = [];
-                reader.readAsArrayBuffer(file);
-                reader.onloadend = (evt) => {
-                    if (evt.target.readyState == FileReader.DONE) {
-                        let arrayBuffer = evt.target.result,
-                            array = new Uint8Array(arrayBuffer);
-                        for (byte of array) {
-                            fileByteArray.push(byte);
-                        }
-                    }
-                    resolve(fileByteArray);
-                }
-            } catch (e) {
-                reject(e);
-            }
-        })
-    }
-
     function setupWebSocket() {
         let i = 80;
         if (location.port != 0) {
