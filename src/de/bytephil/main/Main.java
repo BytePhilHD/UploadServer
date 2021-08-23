@@ -6,31 +6,30 @@ import de.bytephil.threads.UpdateThread;
 import de.bytephil.utils.Console;
 import io.javalin.Javalin;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
 public class Main {
     private static Javalin app;
     private static java.lang.Thread thread;
 
-    public static void main(String[] args) {
-        App();
+    public Main() {
+
     }
 
     private static String password = "Admin!";
     private static ArrayList<String> clients = new ArrayList<>();
     private static ArrayList<String> logtIn = new ArrayList<>();
 
-    public static void App() {
+    public void start() throws IOException {
         Javalin app = Javalin.create(config -> {
             config.addStaticFiles("/public");
 
         }).start();
         Main.app = app;
         thread = UpdateThread.thread;
-       // thread.start();
+        // thread.start();
 
         app.ws("/websockets", ws -> {
             ws.onConnect(ctx -> {
@@ -60,8 +59,7 @@ public class Main {
                         ctx.send("CORRECT " + ctx.getSessionId());
                         logtIn.add(ctx.getSessionId());
                         System.out.println("Correct password typed!");
-                    }
-                    else {
+                    } else {
                         ctx.send("WRONG");
                         System.out.println("Wrong password typed!");
                     }
@@ -104,29 +102,6 @@ public class Main {
             ctx.render("/public/logout.html");
         });
     }
-    static String FILEPATH = "/public/files";
-    static File file = new File(FILEPATH);
-    static void writeByte(byte[] bytes)
-    {
-        try {
 
-            // Initialize a pointer
-            // in file using OutputStream
-            OutputStream
-                    os
-                    = new FileOutputStream(file);
-
-            // Starts writing the bytes in it
-            os.write(bytes);
-            System.out.println("Successfully"
-                    + " byte inserted");
-
-            // Close the file
-            os.close();
-        }
-
-        catch (Exception e) {
-            System.out.println("Exception: " + e);
-        }
-    }
 }
+
