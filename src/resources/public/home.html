@@ -22,7 +22,7 @@
     function manageInput() {
         const urlCreator = window.URL || window.webkitURL;
         let myFile = document.getElementById('upload').files[0];
-        var imageUrl = urlCreator.createObjectURL(document.getElementById('upload').files[0]);
+        var imageUrl = urlCreator.createObjectURL(document.getElementById('upload'));
 
         ws.send("FILE: "+ imageUrl);
         console.log("File send! " + imageUrl);

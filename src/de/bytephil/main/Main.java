@@ -15,7 +15,6 @@ public class Main {
     private static java.lang.Thread thread;
 
     public Main() {
-
     }
 
     private static String password = "Admin!";
