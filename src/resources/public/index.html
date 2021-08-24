@@ -52,6 +52,9 @@
         }
         ws = new WebSocket("ws://" + location.hostname + ":" + i + "/websockets");
 
+        ws.onopen = openEvent => {
+         document.getElementById("input").value = "Connecting to Server established!";
+        }
         ws.onclose = closeEvent => {
             setupWebSocket();
         }

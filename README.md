@@ -1,6 +1,8 @@
 # UploadServer
 UploadServer is a Java 11 based Application to host a WebSite where Users can upload files and store them with a UUID at your Server.
 
+Currently the upload function is not working!
+
 <h1>How to install</h1>
 Download the newest Version from the Releases Page.
 
