@@ -14,16 +14,23 @@
 <p>.</p>
 
 <label for="pw">Passwort:</label>
-<input type="text"
-       id="pw" name="pw"><br><br>
+<input type="text" id="pw" name="pw"><br><br>
 
 <button onclick="manageInput()" class="btn btn-primary" type="button" style="margin: 4px;">Senden</button>
 
-
-<p id="input"></p>
 <p>.</p>
 
+<input type="text" id="input" disabled>
+
 <script>
+    var input = document.getElementById("pw");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+         event.preventDefault();
+        manageInput();
+        }
+    });
+
     window.onload = setupWebSocket;
     let ws;
     const test = true;
@@ -35,6 +42,7 @@
     }
 
     function setupWebSocket() {
+        document.getElementById('input').style.width="400px";
         let i = 80;
         if (location.port != 0) {
             i = location.port;
@@ -49,19 +57,23 @@
         }
         ws.onerror = errorEvent => {
             document.getElementById("input").innerHTML = "Server is not responding! Please try again!";
+            document.getElementById("input").value = "Server is not responding! Please try again!";
         }
         ws.onmessage = messageEvent => {
             var wsinput = messageEvent.data;
             if (wsinput.includes("CORRECT")) {
                 wsinput = wsinput.replace("CORRECT ", "");
                 document.getElementById("input").innerHTML = "Correct password!";
+                document.getElementById("input").value = "Correct password!";
                 window.location.href = location + "home?" + wsinput;
 
             } else if (wsinput.includes("WRONG")) {
                 document.getElementById("input").innerHTML = "Wrong password! Please try again!";
+                document.getElementById("input").value = "Wrong password! Please try again!";
             }
         }
     }
+
 </script>
 </body>
 </html>

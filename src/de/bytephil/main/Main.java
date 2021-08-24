@@ -31,7 +31,7 @@ public class Main {
 
     public void start() throws IOException {
 
-        if (!new File("server.config").exists()) {
+        if (!new File("server.cfg").exists()) {
             de.bytephil.utils.Console.printout("The config file is missing! Creating default one.", MessageType.WARNING);
             final File newFile = new File("server.cfg");
             copyFile(newFile, "default.cfg");
@@ -82,10 +82,9 @@ public class Main {
                     if (message.equalsIgnoreCase(password)) {
                         ctx.send("CORRECT " + ctx.getSessionId());
                         logtIn.add(ctx.getSessionId());
-                        System.out.println("Correct password typed!");
+                        Console.printout("User logged in successfully (Session-ID: " + ctx.getSessionId(), MessageType.INFO);
                     } else {
                         ctx.send("WRONG");
-                        System.out.println("Wrong password typed!");
                     }
                 }
             });
