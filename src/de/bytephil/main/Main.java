@@ -1,34 +1,59 @@
 package de.bytephil.main;
 
-
 import de.bytephil.enums.MessageType;
 import de.bytephil.threads.UpdateThread;
 import de.bytephil.utils.Console;
+import de.bytephil.utils.ServerConfiguration;
 import io.javalin.Javalin;
 
 import java.io.*;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
 public class Main {
     private static Javalin app;
     private static java.lang.Thread thread;
 
+    private static Main instance;
+
+    public static Main getInstance() {
+        return instance;
+    }
     public Main() {
+        instance = this;
     }
 
-    private static String password = "Admin!";
+    private static String password;
     private static ArrayList<String> clients = new ArrayList<>();
     private static ArrayList<String> logtIn = new ArrayList<>();
 
+    private ServerConfiguration config;
+    public String version = "0.0.2";
+
     public void start() throws IOException {
+
+        if (!new File("server.config").exists()) {
+            de.bytephil.utils.Console.printout("The config file is missing! Creating default one.", MessageType.WARNING);
+            final File newFile = new File("server.cfg");
+            copyFile(newFile, "default.cfg");
+        }
+
+        // Load config
+        config = new ServerConfiguration("server.cfg");
+        if (config.loaded) {
+            Console.printout("Config was successfully loaded!", MessageType.INFO);
+            password = config.password;
+        } else {
+            Console.printout("Config not loaded! Using default.", MessageType.WARNING);
+        }
+
         Javalin app = Javalin.create(config -> {
             config.addStaticFiles("/public");
-
-        }).start();
+        }).start(config.port);
         Main.app = app;
         thread = UpdateThread.thread;
         // thread.start();
+
+
 
         app.ws("/websockets", ws -> {
             ws.onConnect(ctx -> {
@@ -66,6 +91,8 @@ public class Main {
             });
         });
 
+        //TODO - home.html file input at line 25 (currently not creating a imageURL maybe because file is not found with document.upload ...)
+
         app.ws("/login", ws -> {
             ws.onConnect(ctx -> {
                 Console.printout("[/login] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
@@ -100,6 +127,18 @@ public class Main {
         app.get("/logout", ctx -> {
             ctx.render("/public/logout.html");
         });
+    }
+
+    public void copyFile(File newFile, String existingFile) throws IOException {
+        newFile.createNewFile();
+        final FileOutputStream configOutputStream = new FileOutputStream(newFile);
+        byte[] buffer = new byte[4096];
+        final InputStream defaultConfStream = getClass().getClassLoader().getResourceAsStream(existingFile);
+        int readBytes;
+        while ((readBytes = defaultConfStream.read(buffer)) > 0) {
+            configOutputStream.write(buffer, 0, readBytes);
+        }
+        defaultConfStream.close();
     }
 
 }
