@@ -29,6 +29,8 @@ public class ServerConfiguration extends Config {
         }
         port = Integer.parseInt(prop.getProperty("http.port", "80"));
         password = prop.getProperty("password", "YourPW!");
+        debugMSG = Boolean.parseBoolean(prop.getProperty("debugMSG", "false"));
+
         autoUpdate = Boolean.parseBoolean(prop.getProperty("app.autoUpdate", "true"));
         http = Boolean.parseBoolean(prop.getProperty("http.activated", "true"));
         https = Boolean.parseBoolean(prop.getProperty("ssl.activated", "false"));

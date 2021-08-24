@@ -4,6 +4,8 @@ public class Config {
 
         public boolean autoUpdate;
         public String password;
+        public boolean debugMSG;
+
         public boolean http;
         public boolean https;
         public int port;

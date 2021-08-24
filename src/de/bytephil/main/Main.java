@@ -28,6 +28,7 @@ public class Main {
 
     private ServerConfiguration config;
     public String version = "0.0.2";
+    public boolean debugMSG = false;
 
     public void start() throws IOException {
 
@@ -42,6 +43,7 @@ public class Main {
         if (config.loaded) {
             Console.printout("Config was successfully loaded!", MessageType.INFO);
             password = config.password;
+            debugMSG = config.debugMSG;
         } else {
             Console.printout("Config not loaded! Using default.", MessageType.WARNING);
         }
@@ -49,15 +51,19 @@ public class Main {
         Javalin app = Javalin.create(config -> {
             config.addStaticFiles("/public");
         }).start(config.port);
+
+        if (debugMSG) {
+            Console.printout("Debug Messages Enabled! To turn off, change \"debugMSG=true\" to \"debugMSG=false\" in your server.cfg!", MessageType.WARNING);
+        }
+
+
         Main.app = app;
         thread = UpdateThread.thread;
         // thread.start();
 
-
-
         app.ws("/websockets", ws -> {
             ws.onConnect(ctx -> {
-                Console.printout("[/websockets] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
+                Console.printout("[/websockets] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.DEBUG);
                 clients.add(ctx.getSessionId());
                /* if (!thread.isAlive()) {
                     thread.stop();
@@ -67,7 +73,7 @@ public class Main {
                 */
             });
             ws.onClose(ctx -> {
-                Console.printout("[/websockets] Client disconnected (Session-ID: " + ctx.getSessionId() + ")", MessageType.INFO);
+                Console.printout("[/websockets] Client disconnected (Session-ID: " + ctx.getSessionId() + ")", MessageType.DEBUG);
                 clients.remove(ctx.getSessionId());
                 /*if (clients.size() == 0 && thread.isAlive()) {
                     thread.stop();
@@ -94,10 +100,10 @@ public class Main {
 
         app.ws("/login", ws -> {
             ws.onConnect(ctx -> {
-                Console.printout("[/login] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
+                Console.printout("[/login] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.DEBUG);
             });
             ws.onClose(ctx -> {
-                Console.printout("[/login] Client disconnected (Session-ID: " + ctx.getSessionId() + ")", MessageType.INFO);
+                Console.printout("[/login] Client disconnected (Session-ID: " + ctx.getSessionId() + ")", MessageType.DEBUG);
             });
             ws.onMessage(ctx -> {
                 String message = ctx.message();
