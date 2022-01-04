@@ -5,6 +5,7 @@ import de.bytephil.threads.UpdateThread;
 import de.bytephil.utils.Console;
 import de.bytephil.utils.ServerConfiguration;
 import io.javalin.Javalin;
+import io.javalin.core.util.FileUtil;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class Main {
         }
 
         Javalin app = Javalin.create(config -> {
-            config.addStaticFiles("/public");
+
         }).start(config.port);
 
         if (debugMSG) {
@@ -125,7 +126,15 @@ public class Main {
                 Console.printout(ctx.error().toString(), MessageType.ERROR);
             });
         });
-
+        app.post("/upload", ctx -> {
+            ctx.uploadedFiles("files").forEach(uploadedFile -> {
+                FileUtil.streamToFile(uploadedFile.getContent(), "upload/" + uploadedFile.getFilename());
+            });
+            ctx.render("/public/logout.html");
+        });
+        app.get("/", ctx -> {
+            ctx.render("/public/index.html");
+        });
         app.get("/home", ctx -> {
             ctx.render("/public/home.html");
         });

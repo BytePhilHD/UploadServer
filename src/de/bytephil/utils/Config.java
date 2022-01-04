@@ -5,6 +5,7 @@ public class Config {
         public boolean autoUpdate;
         public String password;
         public boolean debugMSG;
+        public boolean passwordactive;
 
         public boolean http;
         public boolean https;
