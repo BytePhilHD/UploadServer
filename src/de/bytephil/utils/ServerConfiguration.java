@@ -1,7 +1,6 @@
 package de.bytephil.utils;
 
 import de.bytephil.enums.MessageType;
-import de.bytephil.main.Main;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,8 +28,9 @@ public class ServerConfiguration extends Config {
         }
         port = Integer.parseInt(prop.getProperty("http.port", "80"));
         password = prop.getProperty("password", "YourPW!");
+        username = prop.getProperty("adminusername", "admin");
         debugMSG = Boolean.parseBoolean(prop.getProperty("debugMSG", "false"));
-        passwordactive = Boolean.parseBoolean(prop.getProperty("password.activated", "true"));
+        address = prop.getProperty("webaddress", "https://bytephil.de/");
 
         autoUpdate = Boolean.parseBoolean(prop.getProperty("app.autoUpdate", "true"));
         http = Boolean.parseBoolean(prop.getProperty("http.activated", "true"));
@@ -38,6 +38,13 @@ public class ServerConfiguration extends Config {
         sslPort = Integer.parseInt(prop.getProperty("ssl.port", "443"));
         keystorePath = prop.getProperty("ssl.keystorePath", "keystore.jks");
         keystorePW = prop.getProperty("ssl.keystorePassword", "password");
+
+        // EMAIL
+        emailhost = prop.getProperty("email.smtp.host", "smtp.gmail.com");
+        emailport = Integer.parseInt(prop.getProperty("email.smtp.port", "465"));
+        emailSecureMethod = prop.getProperty("email.smtp.secure.method", "STARTTLS");
+        emailDisplayName = prop.getProperty("email.smtp.displayname", "");
+        emailuser = prop.getProperty("email.smtp.user", "testuser@gmail.com");
+        emailpassword = prop.getProperty("email.smtp.password", "yourPassword");
     }
 }
-

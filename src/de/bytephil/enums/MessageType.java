@@ -1,6 +1,5 @@
 package de.bytephil.enums;
 
 public enum MessageType {
-    INFO, WARNING, ERROR, DEBUG
+    WARNING, INFO, ERROR, DEBUG;
 }
-
