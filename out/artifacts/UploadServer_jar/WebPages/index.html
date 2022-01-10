@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:lightslategray;">
+<body style="background-color:lightslategray;"></body>
+<head>
+    <meta charset="UTF-8">
+    <title>TestServer</title>
+</head>
+<body>
+
+<p>---</p>
+<p>Hallöle</p>
+<p>Das is eine TestSeite! </p>
+<p>Für weitere Infos gebe das Passwort ein!</p>
+<p>.</p>
+
+<label for="pw">Passwort:</label>
+<input type="text" id="pw" name="pw"><br><br>
+
+<button onclick="manageInput()" class="btn btn-primary" type="button" style="margin: 4px;">Senden</button>
+
+<p>.</p>
+
+<input type="text" id="input" disabled>
+
+<script>
+    var input = document.getElementById("pw");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+         event.preventDefault();
+        manageInput();
+        }
+    });
+
+    window.onload = setupWebSocket;
+    let ws;
+    const test = true;
+
+    function manageInput() {
+        let input = document.getElementById("pw").value;
+        document.getElementById('pw').value = '';
+        ws.send("PASSWORD: " + input);
+    }
+
+    function setupWebSocket() {
+        document.getElementById('input').style.width="400px";
+        let i = 80;
+        if (location.port != 0) {
+            i = location.port;
+        }
+        if (location.search != 0) {
+            window.location.href = location.protocol + "//" + location.host;
+        }
+        ws = new WebSocket("ws://" + location.hostname + ":" + i + "/websockets");
+
+        ws.onopen = openEvent => {
+         document.getElementById("input").value = "Connecting to Server established!";
+        }
+        ws.onclose = closeEvent => {
+            setupWebSocket();
+        }
+        ws.onerror = errorEvent => {
+            document.getElementById("input").innerHTML = "Server is not responding! Please try again!";
+            document.getElementById("input").value = "Server is not responding! Please try again!";
+        }
+        ws.onmessage = messageEvent => {
+            var wsinput = messageEvent.data;
+            if (wsinput.includes("CORRECT")) {
+                wsinput = wsinput.replace("CORRECT ", "");
+                document.getElementById("input").innerHTML = "Correct password!";
+                document.getElementById("input").value = "Correct password!";
+                window.location.href = location + "home?" + wsinput;
+
+            } else if (wsinput.includes("WRONG")) {
+                document.getElementById("input").innerHTML = "Wrong password! Please try again!";
+                document.getElementById("input").value = "Wrong password! Please try again!";
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

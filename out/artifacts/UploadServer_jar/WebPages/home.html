@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Login Site</p>
+
+<label for="upload">Choose a file to upload:</label>
+
+<input type="file"
+       id="upload" name="avatar">
+
+<button onclick="manageInput()" class="btn btn-primary" type="button" style="margin: 4px;">Senden</button>
+
+<form method="post" action="/upload" enctype="multipart/form-data">
+    <input type="file" name="files" multiple>
+    <button>Submit</button>
+</form>
+
+</body>
+<script>
+    window.onload = setupWebSocket;
+    let ws;
+
+    function manageInput() {
+        const urlCreator = window.URL || window.webkitURL;
+        let myFile = document.getElementById('upload').files[0];
+        var imageUrl = urlCreator.createObjectURL(document.getElementById('upload'));
+
+        ws.send("FILE: "+ imageUrl);
+        console.log("File send! " + imageUrl);
+    }
+
+    function setupWebSocket() {
+        let i = 80;
+        if (location.port != 0) {
+            i = location.port;
+        }
+        ws = new WebSocket("ws://" + location.host.replace("home", "") + "/login");
+
+        ws.onopen = openEvent => {
+            ws.send("LOGIN: " + location.search);
+        }
+        ws.onclose = closeEvent => {
+            setupWebSocket();
+        }
+        ws.onerror = errorEvent => {
+            setupWebSocket();
+            console.log("An error occurred!");
+        }
+        ws.onmessage = messageEvent => {
+            var wsinput = messageEvent.data;
+            if (wsinput.includes("CLOSE")) {
+                const location1 = location.toString();
+                const loc = location1.replace("home", "logout");
+                window.location.href = loc;
+            }
+        }
+    }
+</script>
+</html>

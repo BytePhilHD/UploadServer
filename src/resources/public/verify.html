@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Apply-Server</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-Callout-Info.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Features-Boxed.css">
+    <link rel="stylesheet" href="assets/css/Formulario-Farmacia.css">
+    <link rel="stylesheet" href="assets/css/FPE-Gentella-form-elements-1.css">
+    <link rel="stylesheet" href="assets/css/FPE-Gentella-form-elements.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/MUSA_form-wizard-1.css">
+    <link rel="stylesheet" href="assets/css/MUSA_form-wizard.css">
+    <link rel="stylesheet" href="assets/css/User-Information-Panel---Lite--Secondary-User-Panel-Footer.css">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Apply-Server</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button></div>
+    </nav>
+    <header class="masthead" style="background-image: url(&quot;assets/img/star-sky.jpg&quot;);">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 class="brand-heading">Verify</h1><p id="verify" class="intro-text" style="color: rgb(255,255,255);">Please wait...</p>
+
+<script>
+        window.onload = setupWebSocket;
+
+        let ws;
+
+        function setupWebSocket() {
+            let i = 80;
+            if (location.port != 0) {
+                i = location.port;
+            }
+            ws = new WebSocket("ws://" + location.hostname + ":" + i + "/verify");
+
+            ws.onopen = openEvent => {
+                console.log('INFO - Connection to Server established!');
+                if (location.search != 0) {
+                    ws.send(location.search);
+                    console.log("send " + location.search);
+                }
+            }
+            ws.onclose = closeEvent => {
+                setupWebSocket();
+            }
+            ws.onerror = errorEvent => {
+                console.log('Server Error!');
+            }
+            ws.onmessage = messageEvent => {
+                var wsinput = messageEvent.data;
+                if (wsinput.includes("VERIFIED")) {
+                    document.getElementById("verify").innerHTML = "Successfully verified your account!";
+                    console.log("Successfully verified!");
+
+                } else if (wsinput.includes("WRONG")) {
+                    document.getElementById("verify").innerHTML = "Something went wrong! Please check your Link again!";
+                }
+            }
+        }
+
+    </script></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="map-clean"></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/grayscale.js"></script>
+    <script src="assets/js/MUSA_form-wizard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+[2022-01-10 20:16:38] WARNING - The log file is missing. Creating a new one.
+[2022-01-10 20:16:38] INFO - The program is trying to start...
+[2022-01-10 20:16:38] INFO - Config was successfully loaded!
+[2022-01-10 20:16:39] INFO - The program successfully started!
+[2022-01-10 20:18:02] INFO - The program is trying to start...
+[2022-01-10 20:18:02] INFO - Config was successfully loaded!
+[2022-01-10 20:18:02] INFO - The program successfully started!
