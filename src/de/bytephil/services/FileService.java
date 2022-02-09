@@ -29,7 +29,7 @@ public class FileService {
                 return;
             }
         }
-            try {
+        try {
             JarFile jar = new JarFile(new File(getClass().getProtectionDomain().getCodeSource().getLocation().toURI()));
             final Enumeration<JarEntry> entries = jar.entries();
             final String newpath = resourcesName;

@@ -1,6 +1,7 @@
 package de.bytephil.utils;
 
 import de.bytephil.enums.MessageType;
+import de.bytephil.enums.Rank;
 import de.bytephil.main.Main;
 import de.bytephil.services.EmailService;
 import de.bytephil.users.User;
@@ -15,7 +16,12 @@ public class AccountManager {
     private static HashMap<String, String> userRegistrationPW = new HashMap<>();
     private static HashMap<String, String> userRegistrationEmail = new HashMap<>();
 
-    public void createAccount(String username, String email, String password) {
+    public boolean createAccount(String username, String email, String password) {
+        if (userRegistration.containsValue(username) || userRegistrationEmail.containsKey(email)) {
+            Console.printout("User already exists", MessageType.ERROR);
+            return false;
+        }
+
         String passwordRegistration = PasswordGenerator.generateRandomPassword(20);
         String link = Main.config.address + "verify?" + passwordRegistration;
 
@@ -28,6 +34,8 @@ public class AccountManager {
         userRegistration.put(passwordRegistration, username);
         userRegistrationPW.put(passwordRegistration, password);
         userRegistrationEmail.put(passwordRegistration, email);
+
+        return true;
     }
 
     public static boolean checkVerify(String registrationKey) {
@@ -38,7 +46,7 @@ public class AccountManager {
             String email = userRegistrationEmail.get(registrationKey);
             Console.printout("New Account verified: " + username + " with password " + password + " and email " + email, MessageType.INFO);
 
-            User user = new User(username, password, email);
+            User user = new User(username, password, email, Rank.USER);
             new UserService().createUser(user);
 
             userRegistration.remove(registrationKey);

@@ -35,11 +35,27 @@ public class UserService {
         saveUser(user);
     }
 
+    public void removeUser(User user) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getName().equals(user.getName())) {
+                users.remove(i);
+                break;
+            }
+        } try {
+            final File file = new File(new File(path).getPath() + "/" + user.getId() + ".json");
+            file.delete();
+            Console.printout("The user " + user.getName() + " was successfully deleted.", MessageType.INFO);
+        } catch (Exception e1) {
+            Console.printout("The user couldn't be deleted!", MessageType.ERROR);
+        }
+    }
+
+
     public void saveUser(User user) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getName().equals(user.getName())) {
                 users.set(i, user);
-                return;
+                break;
             }
         }
         users.add(user);
@@ -59,7 +75,7 @@ public class UserService {
             if (name.contains("%") || name.contains("#") || name.contains("'")) {
                 Console.printout("Error whilst trying to read users!", MessageType.ERROR);
             } else {
-                final User user = new User(name, jsonUser.getString("name"), jsonUser.getString("password"), jsonUser.getString("email"));
+                final User user = new User(name, jsonUser.getString("name"), jsonUser.getString("password"), jsonUser.getString("email"), jsonUser.getString("rank"));
 
                 if (!user.getName().contains("%") && !user.getName().contains("#") && !user.getName().contains("'"))
                     users.add(user);
@@ -93,8 +109,13 @@ public class UserService {
             jsonObject.put("name", user.getName());
             jsonObject.put("password", user.getPassword());
             jsonObject.put("email", user.getEmail());
+            jsonObject.put("rank", user.getRank());
             save(file, jsonObject);
         });
+    }
+
+    public List<User> getAll() {
+        return users;
     }
 
     public JSONObject load(File file) {

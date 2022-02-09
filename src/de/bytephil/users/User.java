@@ -1,5 +1,6 @@
 package de.bytephil.users;
 
+import de.bytephil.enums.Rank;
 import de.bytephil.utils.PasswordGenerator;
 
 public class User {
@@ -8,19 +9,22 @@ public class User {
     private String name;
     private String password;
     private String email;
+    private Rank rank;
 
-    public User(String name, String password, String email) {
+    public User(String name, String password, String email, Rank rank) {
         this.id = PasswordGenerator.generateID(10);
         this.name = name;
         this.password = password;
         this.email = email;
+        this.rank = rank;
     }
 
-    public User(String id, String name, String password, String email) {
+    public User(String id, String name, String password, String email, String rank) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
+        this.rank = Rank.valueOf(rank.toUpperCase());
     }
 
     public String getName() {
@@ -31,10 +35,20 @@ public class User {
         return email;
     }
 
-    public void setEmail() { this.email = email; }
+    public void setEmail() {
+        this.email = email;
+    }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
     }
 
     public String getPassword() {

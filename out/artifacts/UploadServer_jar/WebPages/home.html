@@ -1,25 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Apply-Server</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-Callout-Info.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Features-Boxed.css">
+    <link rel="stylesheet" href="assets/css/Formulario-Farmacia.css">
+    <link rel="stylesheet" href="assets/css/FPE-Gentella-form-elements-1.css">
+    <link rel="stylesheet" href="assets/css/FPE-Gentella-form-elements.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/MUSA_form-wizard-1.css">
+    <link rel="stylesheet" href="assets/css/MUSA_form-wizard.css">
+    <link rel="stylesheet" href="assets/css/User-Information-Panel---Lite--Secondary-User-Panel-Footer.css">
 </head>
-<body>
-<p>Login Site</p>
 
-<label for="upload">Choose a file to upload:</label>
-
-<input type="file"
-       id="upload" name="avatar">
-
-<button onclick="manageInput()" class="btn btn-primary" type="button" style="margin: 4px;">Senden</button>
-
-<form method="post" action="/upload" enctype="multipart/form-data">
-    <input type="file" name="files" multiple>
-    <button>Submit</button>
-</form>
-
-</body>
+<body id="page-top" style="opacity: 1;filter: blur(0px);">
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Apply-Server - DashBoard</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link active js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#download">download</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="index.html">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead" style="height: 719px;background-position: top;background-image: url(&quot;assets/img/DSC06530.JPG&quot;);">
+        <div class="intro-body" style="opacity: 1;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 class="brand-heading">HOME</h1>
+                        <p class="intro-text" style="color: rgb(253,254,255);">A free, responsive, one page Bootstrap theme.<br>Created with love.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="map-clean"></div><footer>
+    <div class="container text-center">
+        <p>Copyright © Apply-Server 2021 by BytePhil</p>
+    </div>
+</footer>
 <script>
     window.onload = setupWebSocket;
     let ws;
@@ -53,11 +85,16 @@
         ws.onmessage = messageEvent => {
             var wsinput = messageEvent.data;
             if (wsinput.includes("CLOSE")) {
-                const location1 = location.toString();
-                const loc = location1.replace("home", "logout");
-                window.location.href = loc;
+                window.location.href = location.protocol + "login?renew";
             }
         }
     }
 </script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/grayscale.js"></script>
+    <script src="assets/js/MUSA_form-wizard.js"></script>
+</body>
+
 </html>

@@ -5,3 +5,46 @@
 [2022-01-10 20:18:02] INFO - The program is trying to start...
 [2022-01-10 20:18:02] INFO - Config was successfully loaded!
 [2022-01-10 20:18:02] INFO - The program successfully started!
+[2022-01-11 18:35:23] INFO - The program is trying to start...
+[2022-01-11 18:35:23] INFO - Config was successfully loaded!
+[2022-01-11 18:35:24] INFO - The program successfully started!
+[2022-01-11 18:35:54] INFO - The program is trying to start...
+[2022-01-11 18:35:54] INFO - Config was successfully loaded!
+[2022-01-11 18:35:54] INFO - The program successfully started!
+[2022-01-11 18:37:07] INFO - The program is trying to start...
+[2022-01-11 18:37:08] INFO - Config was successfully loaded!
+[2022-01-11 18:37:08] INFO - The program successfully started!
+[2022-01-11 18:37:42] INFO - Client connected with Session-ID: b5a509a0-dc62-453c-871b-b498f6a6edc4 IP: /0:0:0:0:0:0:0:1:51933
+[2022-01-11 18:38:39] INFO - The program is trying to start...
+[2022-01-11 18:38:39] INFO - Config was successfully loaded!
+[2022-01-11 18:38:39] INFO - The program successfully started!
+[2022-01-11 18:38:45] INFO - Client connected with Session-ID: c3d936ed-e884-4c62-9a2b-f3596c2fce22 IP: /0:0:0:0:0:0:0:1:51985
+[2022-01-11 18:38:47] INFO - Client connected with Session-ID: a72b8ae7-5373-4eda-95d9-28bbc631e4ec IP: /0:0:0:0:0:0:0:1:51986
+[2022-01-16 21:02:25] INFO - The program is trying to start...
+[2022-01-16 21:02:25] INFO - Config was successfully loaded!
+[2022-01-16 21:02:25] INFO - The program successfully started!
+[2022-01-16 21:02:31] INFO - Client connected with Session-ID: 9dd7bc16-1297-4427-be92-7c080713edbc IP: /0:0:0:0:0:0:0:1:61744
+[2022-01-16 21:02:36] INFO - User logged in successfully (Session-ID: 9dd7bc16-1297-4427-be92-7c080713edbc, IP: /0:0:0:0:0:0:0:1:61744
+[2022-01-16 21:02:36] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:61744
+[2022-01-17 21:30:43] INFO - The program is trying to start...
+[2022-01-17 21:30:43] INFO - Config was successfully loaded!
+[2022-01-17 21:30:44] INFO - The program successfully started!
+[2022-01-17 21:30:48] INFO - Client connected with Session-ID: b6d5da09-3b51-44be-ba87-e4264a41da9a IP: /0:0:0:0:0:0:0:1:55753
+[2022-01-17 21:30:52] INFO - User logged in successfully (Session-ID: b6d5da09-3b51-44be-ba87-e4264a41da9a, IP: /0:0:0:0:0:0:0:1:55753
+[2022-01-17 21:30:52] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:55753
+[2022-01-17 21:31:12] INFO - Client disconnected with IP: /0:0:0:0:0:0:0:1:55756
+[2022-01-17 21:31:12] INFO - Client connected with Session-ID: 1387d7db-a54f-4dae-911c-ff855047c4d3 IP: /0:0:0:0:0:0:0:1:55757
+[2022-01-17 21:31:16] INFO - User logged in successfully (Session-ID: 1387d7db-a54f-4dae-911c-ff855047c4d3, IP: /0:0:0:0:0:0:0:1:55757
+[2022-01-17 21:31:16] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:55757
+[2022-01-17 21:31:21] INFO - The program is trying to start...
+[2022-01-17 21:31:21] INFO - Config was successfully loaded!
+[2022-01-17 21:31:21] INFO - The program successfully started!
+[2022-01-17 21:31:22] INFO - Client disconnected with IP: /0:0:0:0:0:0:0:1:55782
+[2022-01-17 21:31:22] INFO - Client connected with Session-ID: d0ee6bb4-bd1b-4d0d-9a55-a9b36f80a47e IP: /0:0:0:0:0:0:0:1:55786
+[2022-01-17 21:31:42] INFO - User logged in successfully (Session-ID: d0ee6bb4-bd1b-4d0d-9a55-a9b36f80a47e, IP: /0:0:0:0:0:0:0:1:55786
+[2022-01-17 21:31:42] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:55786
+[2022-02-01 20:58:26] INFO - The program is trying to start...
+[2022-02-01 20:58:26] INFO - Config was successfully loaded!
+[2022-02-01 20:58:27] INFO - The program successfully started!
+[2022-02-01 20:58:27] INFO - Client connected with Session-ID: 6fc8bf67-7e0b-414c-9241-08e861e0518b IP: /127.0.0.1:53965
+[2022-02-01 20:58:37] INFO - Client connected with Session-ID: 16e5adbc-72f6-4600-a960-e2f8509a69e9 IP: /0:0:0:0:0:0:0:1:53990

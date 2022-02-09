@@ -7,17 +7,24 @@ import de.bytephil.utils.ServerConfiguration;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.lang.module.Configuration;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class EmailService {
 
-    public static void send(String to,String sub,String msg){
+    public static void send(String to, String sub, String msg) {
         ServerConfiguration configuration = Main.config;
         //Get properties object
         Properties props = new Properties();
         props.put("mail.smtp.host", configuration.emailhost);
+
+        if (defaultConfig(configuration)) {
+            Console.printout("Please update your email credentials in the server.cfg file! Otherwise no email will be sent out!", MessageType.ERROR);
+            return;
+        }
+
         if (configuration.emailSecureMethod.equalsIgnoreCase("SSL")) {
             props.put("mail.smtp.socketFactory.port", configuration.emailport);
             props.put("mail.smtp.socketFactory.class",
@@ -31,10 +38,10 @@ public class EmailService {
         //get Session
         Session session = null;
         try {
-             session = Session.getDefaultInstance(props,
+            session = Session.getDefaultInstance(props,
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication(configuration.emailuser,configuration.emailpassword);
+                            return new PasswordAuthentication(configuration.emailuser, configuration.emailpassword);
                         }
                     });
         } catch (Exception e1) {
@@ -49,7 +56,7 @@ public class EmailService {
             } else {
                 message.setFrom(new InternetAddress(configuration.emailuser, configuration.emailDisplayName));
             }
-            message.setRecipient(Message.RecipientType.TO,new InternetAddress(to));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject(sub);
             message.setText(msg);
             //send message
@@ -60,4 +67,15 @@ public class EmailService {
 
     }
     //  EmailService.send(config.emailuser, config.emailpassword, "phitho2018@gmail.com", "Hallo", "Hallo du");
+
+    private static boolean defaultConfig(ServerConfiguration configuration) {
+        if (configuration.emailuser.equalsIgnoreCase("testuser@gmail.com")) {
+            return true;
+        } else if (configuration.emailpassword.equalsIgnoreCase("yourPassword")) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }

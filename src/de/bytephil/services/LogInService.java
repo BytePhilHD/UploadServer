@@ -5,9 +5,14 @@ import de.bytephil.users.User;
 import de.bytephil.users.UserService;
 import de.bytephil.utils.BCrypt;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class LogInService {
 
-    public static boolean login(String webSocketAnswer) {
+    public static HashMap<String, String> loggedinUsers = new HashMap<>();
+
+    public static boolean login(String webSocketAnswer, String sessionID) {
         int iend = webSocketAnswer.indexOf("|*|");
         int length = webSocketAnswer.length();
         String passwordADMIN = Main.password;
@@ -24,6 +29,7 @@ public class LogInService {
             String passwordUser = user.getPassword();
 
             if (BCrypt.checkpw(password, passwordUser)) {
+                loggedinUsers.put(sessionID, username);
                 return true;
             }
         } catch (Exception e1) {
@@ -32,13 +38,16 @@ public class LogInService {
                 String passwordUser = user.getPassword();
 
                 if (BCrypt.checkpw(password, passwordUser)) {
+                    loggedinUsers.put(sessionID, username);
                     return true;
                 }
             } catch (Exception e2) {}
         }
 
         if (username.equalsIgnoreCase(usernameADMIN) && password.equalsIgnoreCase(passwordADMIN)) {
+            loggedinUsers.put(sessionID, username);
             return true;
         } else return false;
     }
+
 }
