@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="color: rgb(33,31,31);background-color: #26292a;">
 
 <head>
     <meta charset="utf-8">
@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Bootstrap-Callout-Info.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="assets/css/Drag-and-Drop-Multiple-File-Form-Input-upload-Advanced.css">
     <link rel="stylesheet" href="assets/css/Features-Boxed.css">
     <link rel="stylesheet" href="assets/css/Formulario-Farmacia.css">
     <link rel="stylesheet" href="assets/css/FPE-Gentella-form-elements-1.css">
@@ -19,41 +24,60 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="assets/css/MUSA_form-wizard-1.css">
     <link rel="stylesheet" href="assets/css/MUSA_form-wizard.css">
+    <link rel="stylesheet" href="assets/css/Simple-Vertical-Navigation-Menu-v-10.css">
     <link rel="stylesheet" href="assets/css/User-Information-Panel---Lite--Secondary-User-Panel-Footer.css">
 </head>
 
-<body id="page-top" style="opacity: 1;filter: blur(0px);">
-    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Apply-Server - DashBoard</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link active js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#download">download</a></li>
-                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="index.html">Log out</a></li>
+<body id="page-top" style="opacity: 1;filter: blur(0px);background-color: transparent;color: rgb(255,255,255);">
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav" style="height: 81px;color: rgb(255,255,255);">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Upload-Server - DashBoard</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive" style="color: rgb(255,255,255);">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="#about" style="color: rgb(255,255,255);">About</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" style="color: rgba(255,255,255,0.5);"><a class="nav-link js-scroll-trigger" href="#download" style="color: rgb(255,255,255);">Download</a></li>
                 </ul>
+            </div>
+            <div class="dropdown" style="font-size: 14px;"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" href="#">Account</a>
+                <div class="dropdown-menu"><a id="yourname" role="presentation" class="dropdown-item" style="background-color: #6f7a85;">Your Name:</a><a id="yourrank" role="presentation" class="dropdown-item" style="background-color: #6f7a85;">Your Rank: </a><a class="dropdown-item border rounded" href="index.html" style="background-color: #6f7a85;height: 29px;font-size: 13px;">Log Out</a></div>
             </div>
         </div>
     </nav>
-    <header class="masthead" style="height: 719px;background-position: top;background-image: url(&quot;assets/img/DSC06530.JPG&quot;);">
-        <div class="intro-body" style="opacity: 1;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h1 class="brand-heading">HOME</h1>
-                        <p class="intro-text" style="color: rgb(253,254,255);">A free, responsive, one page Bootstrap theme.<br>Created with love.</p>
-                        <form method="post" action="/upload" enctype="multipart/form-data">
-                            <input type="file" name="files" multiple>
-                            <button>Submit</button>
-                        </form>
+    <header class="masthead" style="height: 719px;background-position: top;background-color: transparent;">
+        <div class="intro-body" style="opacity: 1;height: 943px;">
+            <div class="container" style="height: 652px;">
+                <div class="intro">
+                    <h2 class="text-center" style="color: rgb(199,215,231);font-size: 44px;">Features </h2>
+                    <p class="text-center" style="color: rgb(255,255,255);">These are three applications</p>
+                </div>
+                <div class="row justify-content-center features">
+                    <div class="col">
+                        <div class="dashed_upload">
+                            <div class="m-5">
+                                <div id="backdrop" class="backdrop backdrop-transition backdrop-dark">
+                                    <div class="text-center w-100" style="position: absolute;top: 50%;">
+                                        <div class="bg-light border rounded border-success shadow-lg m-auto" style="width: 150px;height: 150px;"><i class="fa fa-upload d-block p-4" style="font-size: 50px;"></i><span>Drop file to attach</span></div>
+                                    </div>
+                                </div><div class="jumbotron pt-1">
+    <div class="alert alert-success invisible mt-5" role="alert"><span id="notify"></span></div>
+    <h1>File Drop<br /></h1>
+    <p><label for="form-files"><a class="btn btn-secondary btn-sm" role="button">Choose Files</a></label> or drag the files to anywhere on this page.<br /></p>
+    <p id="filecount"><br /></p>
+    <div id="list"></div>
+    <form method="post" action="/upload" enctype="multipart/form-data">
+        <input id="form-files" class="form-control-file invisible" type="file" name="files" multiple /><button class="btn btn-outline-primary btn-block" type="submit">Submit</button><button class="btn btn-danger mt-5" type="reset" onclick="clearFiles()">Reset</button>
+    </form>
+</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+    <div class="features-boxed" style="filter: saturate(99%);background-size: cover;background-position: 1%90%;background-color: transparent;"></div>
     <div class="map-clean"></div><footer>
     <div class="container text-center">
-        <p>Copyright © Apply-Server 2021 by BytePhil</p>
+        <p>Copyright © Upload-Server 2021 by BytePhil</p>
     </div>
 </footer>
 <script>
@@ -70,14 +94,52 @@
     }
 
     function setupWebSocket() {
+
+        const applicationDefaultClasses = "col-sm-6 col-md-5 col-lg-4 item";
+        const applicationInnerHTML = "                    <div class=\"card\">\n" +
+            "                        <div class=\"card-body\">\n" +
+            "                            <div class=\"media\">\n" +
+            "                                <div><img class=\"rounded-circle mr-3\" style=\"height: 50px; width: 50px;\" src=\"assets/img/DSC06530.JPG\"></div>\n" +
+            "                                <div class=\"media-body\">\n" +
+            "                                    <ul class=\"list-unstyled fa-ul\">\n" +
+            "                                        <li style=\"font-size: 20px;\"><i class=\"fa fa-user fa-li\"></i><a class=\"name-user\">Application 1</a></li>\n" +
+            "                                        <li style=\"font-size: 18px;\"><i class=\"fa fa-envelope fa-li\"></i><a class=\"email-addr\" href=\"#\">apply@gmail.com</a></li>\n" +
+            "                                    </ul>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                            <div><small>Affinity Score <i class=\"fa fa-info-circle text-info\"></i></small>\n" +
+            "                                <div class=\"progress progress-high\">\n" +
+            "                                    <div class=\"progress-bar bg-danger\" aria-valuenow=\"90\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 90%;\"><span class=\"sr-only\">90%</span></div>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                            <hr>\n" +
+            "                            <p class=\"job\">Job</p>\n" +
+            "                        </div>\n" +
+            "                        <div class=\"card-footer\">\n" +
+            "                            <div class=\"media\">\n" +
+            "                                <div><img class=\"rounded-circle mr-3\" style=\"height: 25px; width: 25px;\" src=\"assets/img/avatar.jpg\"></div>\n" +
+            "                                <div class=\"media-body\"><a href=\"#\"><small class=\"text-uppercase text-muted\">Referred By:</small><br>\n" +
+            "                                    Alberto Gonzalez</a></div>\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "                    </div>"
+
+        const applications = document.getElementById("applications");
         let i = 80;
         if (location.port != 0) {
             i = location.port;
         }
-        ws = new WebSocket("ws://" + location.host.replace("home", "") + "/login");
+        if (location.protocol === "http:") {
+            ws = new WebSocket("ws://" + location.host.replace("home", "") + "/login");
+        } else if (location.protocol === "https:") {
+            ws = new WebSocket("wss://" + location.hostname  + ":" + 443 + "/login");
+        }
 
         ws.onopen = openEvent => {
             ws.send("LOGIN: " + location.search);
+            console.log("INFO: Connection to server established!");
+            document.getElementById("yourname").innerHTML = "Your name: Phil";
+            document.getElementById("yourrank").innerHTML = "Your rank: Admin";
         }
         ws.onclose = closeEvent => {
             setupWebSocket();
@@ -87,9 +149,32 @@
             console.log("An error occurred!");
         }
         ws.onmessage = messageEvent => {
-            var wsinput = messageEvent.data;
+            let wsinput = messageEvent.data;
             if (wsinput.includes("CLOSE")) {
                 window.location.href = location.protocol + "login?renew";
+            }
+            else {
+                let iend = wsinput.indexOf("|*|");
+                let iend1 = wsinput.indexOf("|'|");
+                let length = wsinput.length;
+                // The webSocketAnswer should look like this: "BytePhil|*|phitho2018@gmail.com|'|yourpw"
+                let user = null;
+                let email = null;
+                let job = null;
+                if (iend != -1)
+                {
+                    user = wsinput.substring(0, iend); //this will give abc
+                    email = wsinput.substring(iend+3, iend1); //this will give abc
+                    job = wsinput.substring(iend1+3, length);
+                }
+
+                let newApplication = document.createElement("div");
+                newApplication.className = applicationDefaultClasses;
+                newApplication.innerHTML = applicationInnerHTML;
+                newApplication.getElementsByClassName("name-user")[0].innerText = user;
+                newApplication.getElementsByClassName("email-addr")[0].innerText = email;
+                newApplication.getElementsByClassName("job")[0].innerText = job;
+                applications.append(newApplication);
             }
         }
     }
@@ -98,6 +183,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="assets/js/grayscale.js"></script>
+    <script src="assets/js/Drag-and-Drop-Multiple-File-Form-Input-upload-Advanced.js"></script>
     <script src="assets/js/MUSA_form-wizard.js"></script>
 </body>
 

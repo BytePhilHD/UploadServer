@@ -11,6 +11,7 @@ import de.bytephil.users.UserService;
 import de.bytephil.utils.*;
 import de.bytephil.utils.Console;
 import io.javalin.Javalin;
+import io.javalin.core.util.FileUtil;
 import io.javalin.http.staticfiles.Location;
 import jline.internal.Log;
 import org.eclipse.jetty.server.Connector;
@@ -89,8 +90,6 @@ public class Main {
         }
 
         // TEST
-
-
 
         // TEST
         startApp();
@@ -174,12 +173,6 @@ public class Main {
                         String rank = getRank(username);
                         ctx.send("IN*FO" + username + "|*|" + rank);
 
-                        List<Application> applications = new ApplicationService().applications;
-
-
-                        for (Application application : applications) {                                                              // TODO Add limit because all applications are sent
-                            ctx.send(application.getName() + "|*|" + application.getEmail() + "|'|" + application.getJob());
-                        }
                     } else {
                         ctx.send("CLOSE");
                         new LogService().writetoFile(new File("logs/log.txt"), "Client disconnected with IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
@@ -241,6 +234,12 @@ public class Main {
         app.get("/apply", ctx -> {
             ctx.render("/public/apply.html");
         });
+        app.post("/upload", ctx -> {
+            ctx.render("/public/home.html");
+            ctx.uploadedFiles("files").forEach(uploadedFile -> {
+                FileUtil.streamToFile(uploadedFile.getContent(), "upload/" + uploadedFile.getFilename());
+            });
+        });
         while (true) {
             Console.reader();
         }
@@ -257,17 +256,23 @@ public class Main {
     }
 
     public String getRank(String username) {
-        String rank = new UserService().getUserByName(username).getRank().toString();
-        rank.toLowerCase();
-        rank.substring(0, 1).toUpperCase();
+        try {
+            String rank = new UserService().getUserByName(username).getRank().toString();
+            rank.toLowerCase();
+            rank.substring(0, 1).toUpperCase();
 
-        return rank;
+            return rank;
+        } catch (Exception e1) {
+            return null;
+        }
     }
 
     public void checkFolders() {
         File dir = new File("data/user");
         if (!dir.exists()) dir.mkdirs();
         dir = new File("data/apply");
+        if (!dir.exists()) dir.mkdirs();
+        dir = new File("upload");
         if (!dir.exists()) dir.mkdirs();
     }
 

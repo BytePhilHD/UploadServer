@@ -48,3 +48,260 @@
 [2022-02-01 20:58:27] INFO - The program successfully started!
 [2022-02-01 20:58:27] INFO - Client connected with Session-ID: 6fc8bf67-7e0b-414c-9241-08e861e0518b IP: /127.0.0.1:53965
 [2022-02-01 20:58:37] INFO - Client connected with Session-ID: 16e5adbc-72f6-4600-a960-e2f8509a69e9 IP: /0:0:0:0:0:0:0:1:53990
+[2022-02-09 12:57:42] INFO - The program is trying to start...
+[2022-02-09 12:57:42] INFO - Config was successfully loaded!
+[2022-02-09 12:57:42] INFO - The program successfully started!
+[2022-02-09 12:58:09] INFO - Client connected with Session-ID: 5e049f0f-5f99-480b-9688-8b1945b06897 IP: /0:0:0:0:0:0:0:1:55014
+[2022-02-09 13:02:42] INFO - The program is trying to start...
+[2022-02-09 13:02:42] INFO - Config was successfully loaded!
+[2022-02-09 13:02:43] INFO - The program successfully started!
+[2022-02-09 13:02:43] INFO - Client connected with Session-ID: 5e12375d-10dc-4ea6-9b56-593d3a15752e IP: /0:0:0:0:0:0:0:1:55080
+[2022-02-09 13:03:40] INFO - The program is trying to start...
+[2022-02-09 13:03:40] INFO - Config was successfully loaded!
+[2022-02-09 13:03:40] INFO - The program successfully started!
+[2022-02-09 13:03:40] INFO - Client connected with Session-ID: 6df6ef47-1d86-478e-b748-6e8bebe1e35d IP: /127.0.0.1:55113
+[2022-02-09 13:03:51] INFO - Client connected with Session-ID: 841e64ee-477e-497e-83c5-c2417b50b8ce IP: /0:0:0:0:0:0:0:1:55137
+[2022-02-09 13:04:05] INFO - Client connected with Session-ID: 4577dcf3-8b1f-437f-9ca5-7be573338b3d IP: /0:0:0:0:0:0:0:1:55140
+[2022-02-09 13:04:10] INFO - The program is trying to start...
+[2022-02-09 13:04:10] INFO - Config was successfully loaded!
+[2022-02-09 13:04:11] INFO - The program successfully started!
+[2022-02-09 13:04:11] INFO - Client connected with Session-ID: c264d0ab-791b-4e95-af2a-2cb3099dae9f IP: /0:0:0:0:0:0:0:1:55161
+[2022-02-09 13:04:11] INFO - Client connected with Session-ID: 05fe3516-3d07-44c9-9819-35aaf194bbf1 IP: /127.0.0.1:55143
+[2022-02-09 13:04:50] INFO - Client connected with Session-ID: d486c241-5714-47ed-8c7a-fc2243a79479 IP: /0:0:0:0:0:0:0:1:55177
+[2022-02-09 13:06:17] INFO - The program is trying to start...
+[2022-02-09 13:06:17] INFO - Config was successfully loaded!
+[2022-02-09 13:06:17] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:06:18] INFO - The program successfully started!
+[2022-02-09 13:06:18] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:06:18] DEBUG - [/websockets] Client connected with Session-ID: 15475b0c-e4cd-4eb8-a594-5e98348a4e59 IP: /0:0:0:0:0:0:0:1:55218
+[2022-02-09 13:06:18] DEBUG - [/websockets] Client connected with Session-ID: c71674e9-fa90-4185-80e6-ee130f9296e0 IP: /127.0.0.1:55196
+[2022-02-09 13:06:18] INFO - Client connected with Session-ID: 15475b0c-e4cd-4eb8-a594-5e98348a4e59 IP: /0:0:0:0:0:0:0:1:55218
+[2022-02-09 13:06:18] INFO - Client connected with Session-ID: c71674e9-fa90-4185-80e6-ee130f9296e0 IP: /127.0.0.1:55196
+[2022-02-09 13:06:18] DEBUG - [/websockets] Client disconnected (Session-ID: c71674e9-fa90-4185-80e6-ee130f9296e0)
+[2022-02-09 13:06:18] DEBUG - [/websockets] Client connected with Session-ID: 30c82641-5ce7-42f0-932c-25b6cf03592f IP: /0:0:0:0:0:0:0:1:55222
+[2022-02-09 13:06:18] INFO - Client connected with Session-ID: 30c82641-5ce7-42f0-932c-25b6cf03592f IP: /0:0:0:0:0:0:0:1:55222
+[2022-02-09 13:11:18] DEBUG - [/websockets] Client disconnected (Session-ID: 15475b0c-e4cd-4eb8-a594-5e98348a4e59)
+[2022-02-09 13:11:18] DEBUG - [/websockets] Client connected with Session-ID: 25516a48-6163-41d0-9c67-c9ec5137b745 IP: /0:0:0:0:0:0:0:1:55349
+[2022-02-09 13:11:18] INFO - Client connected with Session-ID: 25516a48-6163-41d0-9c67-c9ec5137b745 IP: /0:0:0:0:0:0:0:1:55349
+[2022-02-09 13:11:18] DEBUG - [/websockets] Client disconnected (Session-ID: 30c82641-5ce7-42f0-932c-25b6cf03592f)
+[2022-02-09 13:11:18] DEBUG - [/websockets] Client connected with Session-ID: 17fb3c23-9988-4d29-9953-114da1bd863e IP: /0:0:0:0:0:0:0:1:55350
+[2022-02-09 13:11:18] INFO - Client connected with Session-ID: 17fb3c23-9988-4d29-9953-114da1bd863e IP: /0:0:0:0:0:0:0:1:55350
+[2022-02-09 13:16:18] DEBUG - [/websockets] Client disconnected (Session-ID: 25516a48-6163-41d0-9c67-c9ec5137b745)
+[2022-02-09 13:16:18] DEBUG - [/websockets] Client connected with Session-ID: db6111e1-4c7f-414a-adc7-94af418d6dc2 IP: /0:0:0:0:0:0:0:1:53293
+[2022-02-09 13:16:18] INFO - Client connected with Session-ID: db6111e1-4c7f-414a-adc7-94af418d6dc2 IP: /0:0:0:0:0:0:0:1:53293
+[2022-02-09 13:16:18] DEBUG - [/websockets] Client disconnected (Session-ID: 17fb3c23-9988-4d29-9953-114da1bd863e)
+[2022-02-09 13:16:18] DEBUG - [/websockets] Client connected with Session-ID: 55234bc3-f9cc-4553-890d-38c574bbf97c IP: /0:0:0:0:0:0:0:1:53294
+[2022-02-09 13:16:18] INFO - Client connected with Session-ID: 55234bc3-f9cc-4553-890d-38c574bbf97c IP: /0:0:0:0:0:0:0:1:53294
+[2022-02-09 13:21:18] DEBUG - [/websockets] Client disconnected (Session-ID: db6111e1-4c7f-414a-adc7-94af418d6dc2)
+[2022-02-09 13:21:18] DEBUG - [/websockets] Client connected with Session-ID: 493bf113-3cea-4106-b3cb-5cb1cad61cc5 IP: /0:0:0:0:0:0:0:1:53381
+[2022-02-09 13:21:18] INFO - Client connected with Session-ID: 493bf113-3cea-4106-b3cb-5cb1cad61cc5 IP: /0:0:0:0:0:0:0:1:53381
+[2022-02-09 13:21:18] DEBUG - [/websockets] Client disconnected (Session-ID: 55234bc3-f9cc-4553-890d-38c574bbf97c)
+[2022-02-09 13:21:18] DEBUG - [/websockets] Client connected with Session-ID: 04c46981-1527-4d03-bb26-fbdd9e25d2a0 IP: /0:0:0:0:0:0:0:1:53382
+[2022-02-09 13:21:18] INFO - Client connected with Session-ID: 04c46981-1527-4d03-bb26-fbdd9e25d2a0 IP: /0:0:0:0:0:0:0:1:53382
+[2022-02-09 13:21:35] DEBUG - [/websockets] Client disconnected (Session-ID: 493bf113-3cea-4106-b3cb-5cb1cad61cc5)
+[2022-02-09 13:21:36] DEBUG - [/websockets] Client connected with Session-ID: b4f55c43-f049-4382-ab2e-9dda5ee22b24 IP: /0:0:0:0:0:0:0:1:53398
+[2022-02-09 13:21:36] INFO - Client connected with Session-ID: b4f55c43-f049-4382-ab2e-9dda5ee22b24 IP: /0:0:0:0:0:0:0:1:53398
+[2022-02-09 13:21:48] INFO - User logged in successfully (Session-ID: b4f55c43-f049-4382-ab2e-9dda5ee22b24, IP: /0:0:0:0:0:0:0:1:53398
+[2022-02-09 13:21:48] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:53398
+[2022-02-09 13:21:49] DEBUG - [/websockets] Client disconnected (Session-ID: b4f55c43-f049-4382-ab2e-9dda5ee22b24)
+[2022-02-09 13:21:49] DEBUG - [/login] Client connected with Session-ID: f889fdb2-1bac-4c3a-8b09-b960d61a12df IP: /0:0:0:0:0:0:0:1:53402
+[2022-02-09 13:21:49] DEBUG - [/login] Client disconnected (Session-ID: f889fdb2-1bac-4c3a-8b09-b960d61a12df)
+[2022-02-09 13:21:49] DEBUG - [/login] Client connected with Session-ID: 652100e4-089d-4e15-980b-a58d0403c0b1 IP: /0:0:0:0:0:0:0:1:53403
+[2022-02-09 13:21:49] INFO - Client disconnected with IP: /0:0:0:0:0:0:0:1:53403
+[2022-02-09 13:21:49] DEBUG - [/login] Client disconnected (Session-ID: 652100e4-089d-4e15-980b-a58d0403c0b1)
+[2022-02-09 13:21:49] DEBUG - [/websockets] Client connected with Session-ID: 6bf96b5a-3920-4219-a915-b9f900f42fa3 IP: /0:0:0:0:0:0:0:1:53404
+[2022-02-09 13:21:49] INFO - Client connected with Session-ID: 6bf96b5a-3920-4219-a915-b9f900f42fa3 IP: /0:0:0:0:0:0:0:1:53404
+[2022-02-09 13:22:52] INFO - The program is trying to start...
+[2022-02-09 13:22:52] INFO - Config was successfully loaded!
+[2022-02-09 13:22:52] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:22:53] INFO - The program successfully started!
+[2022-02-09 13:22:53] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:22:53] DEBUG - [/websockets] Client connected with Session-ID: 44bae890-5892-401b-a6d8-4435cb6dceee IP: /0:0:0:0:0:0:0:1:53429
+[2022-02-09 13:22:53] DEBUG - [/websockets] Client connected with Session-ID: 71e54cd7-00fc-4264-bc3e-74fdde0893aa IP: /127.0.0.1:53420
+[2022-02-09 13:22:53] INFO - Client connected with Session-ID: 44bae890-5892-401b-a6d8-4435cb6dceee IP: /0:0:0:0:0:0:0:1:53429
+[2022-02-09 13:22:53] INFO - Client connected with Session-ID: 71e54cd7-00fc-4264-bc3e-74fdde0893aa IP: /127.0.0.1:53420
+[2022-02-09 13:22:53] DEBUG - [/websockets] Client disconnected (Session-ID: 71e54cd7-00fc-4264-bc3e-74fdde0893aa)
+[2022-02-09 13:22:54] DEBUG - [/websockets] Client connected with Session-ID: 71244423-ce0a-4d11-b64b-73b5a8fcf8bd IP: /0:0:0:0:0:0:0:1:53447
+[2022-02-09 13:22:54] INFO - Client connected with Session-ID: 71244423-ce0a-4d11-b64b-73b5a8fcf8bd IP: /0:0:0:0:0:0:0:1:53447
+[2022-02-09 13:22:58] INFO - User logged in successfully (Session-ID: 71244423-ce0a-4d11-b64b-73b5a8fcf8bd, IP: /0:0:0:0:0:0:0:1:53447
+[2022-02-09 13:22:58] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:53447
+[2022-02-09 13:22:58] DEBUG - [/websockets] Client disconnected (Session-ID: 71244423-ce0a-4d11-b64b-73b5a8fcf8bd)
+[2022-02-09 13:22:58] DEBUG - [/login] Client connected with Session-ID: df044ef3-59ba-4347-b6ac-e524548fe8d0 IP: /0:0:0:0:0:0:0:1:53448
+[2022-02-09 13:36:01] INFO - The program is trying to start...
+[2022-02-09 13:36:01] INFO - Config was successfully loaded!
+[2022-02-09 13:36:01] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:36:02] INFO - The program successfully started!
+[2022-02-09 13:36:02] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:36:02] DEBUG - [/websockets] Client connected with Session-ID: f29c7467-53e6-42d9-8234-11549cfa5a70 IP: /0:0:0:0:0:0:0:1:53000
+[2022-02-09 13:36:02] INFO - Client connected with Session-ID: f29c7467-53e6-42d9-8234-11549cfa5a70 IP: /0:0:0:0:0:0:0:1:53000
+[2022-02-09 13:36:06] DEBUG - [/websockets] Client connected with Session-ID: ecb526aa-94da-47f4-9531-288462261f2b IP: /0:0:0:0:0:0:0:1:53026
+[2022-02-09 13:36:06] INFO - Client connected with Session-ID: ecb526aa-94da-47f4-9531-288462261f2b IP: /0:0:0:0:0:0:0:1:53026
+[2022-02-09 13:36:10] INFO - User logged in successfully (Session-ID: ecb526aa-94da-47f4-9531-288462261f2b, IP: /0:0:0:0:0:0:0:1:53026
+[2022-02-09 13:36:10] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:53026
+[2022-02-09 13:36:10] DEBUG - [/websockets] Client disconnected (Session-ID: ecb526aa-94da-47f4-9531-288462261f2b)
+[2022-02-09 13:36:10] DEBUG - [/login] Client connected with Session-ID: 59e8229d-e252-4d56-97da-18a00563c34d IP: /0:0:0:0:0:0:0:1:53027
+[2022-02-09 13:37:17] DEBUG - [/login] Client disconnected (Session-ID: 59e8229d-e252-4d56-97da-18a00563c34d)
+[2022-02-09 13:41:02] DEBUG - [/websockets] Client disconnected (Session-ID: f29c7467-53e6-42d9-8234-11549cfa5a70)
+[2022-02-09 13:41:02] DEBUG - [/websockets] Client connected with Session-ID: f5a4d710-0401-4207-9f18-98846e07fa67 IP: /0:0:0:0:0:0:0:1:55513
+[2022-02-09 13:41:02] INFO - Client connected with Session-ID: f5a4d710-0401-4207-9f18-98846e07fa67 IP: /0:0:0:0:0:0:0:1:55513
+[2022-02-09 13:43:28] INFO - The program is trying to start...
+[2022-02-09 13:43:28] INFO - Config was successfully loaded!
+[2022-02-09 13:43:28] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:43:29] INFO - The program successfully started!
+[2022-02-09 13:43:29] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:43:29] DEBUG - [/websockets] Client connected with Session-ID: a26e2594-0d8e-45ca-a051-0596110647b0 IP: /0:0:0:0:0:0:0:1:58342
+[2022-02-09 13:43:29] INFO - Client connected with Session-ID: a26e2594-0d8e-45ca-a051-0596110647b0 IP: /0:0:0:0:0:0:0:1:58342
+[2022-02-09 13:44:10] INFO - The program is trying to start...
+[2022-02-09 13:44:10] INFO - Config was successfully loaded!
+[2022-02-09 13:44:10] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:44:11] INFO - The program successfully started!
+[2022-02-09 13:44:11] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:44:11] DEBUG - [/websockets] Client connected with Session-ID: 416e4df9-0053-43a9-8878-bda44406ff61 IP: /0:0:0:0:0:0:0:1:58443
+[2022-02-09 13:44:11] INFO - Client connected with Session-ID: 416e4df9-0053-43a9-8878-bda44406ff61 IP: /0:0:0:0:0:0:0:1:58443
+[2022-02-09 13:44:14] DEBUG - [/websockets] Client connected with Session-ID: 44c1dd9a-dd90-4fbf-bbe6-beddec2ba156 IP: /0:0:0:0:0:0:0:1:58469
+[2022-02-09 13:44:14] INFO - Client connected with Session-ID: 44c1dd9a-dd90-4fbf-bbe6-beddec2ba156 IP: /0:0:0:0:0:0:0:1:58469
+[2022-02-09 13:44:19] INFO - User logged in successfully (Session-ID: 44c1dd9a-dd90-4fbf-bbe6-beddec2ba156, IP: /0:0:0:0:0:0:0:1:58469
+[2022-02-09 13:44:19] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:58469
+[2022-02-09 13:44:19] DEBUG - [/websockets] Client disconnected (Session-ID: 44c1dd9a-dd90-4fbf-bbe6-beddec2ba156)
+[2022-02-09 13:44:19] DEBUG - [/login] Client connected with Session-ID: d0ce4047-7afe-434b-9795-8cff07b69127 IP: /0:0:0:0:0:0:0:1:58470
+[2022-02-09 13:45:56] INFO - The program is trying to start...
+[2022-02-09 13:45:56] INFO - Config was successfully loaded!
+[2022-02-09 13:45:56] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:45:57] INFO - The program successfully started!
+[2022-02-09 13:45:57] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:45:57] DEBUG - [/login] Client connected with Session-ID: 5d5999da-2a95-437f-b0f3-2fa19beb5520 IP: /0:0:0:0:0:0:0:1:58503
+[2022-02-09 13:45:57] DEBUG - [/websockets] Client connected with Session-ID: 9d072a59-14b5-4ee0-8c1a-cf610523441b IP: /127.0.0.1:58522
+[2022-02-09 13:45:57] INFO - Client connected with Session-ID: 9d072a59-14b5-4ee0-8c1a-cf610523441b IP: /127.0.0.1:58522
+[2022-02-09 13:45:57] INFO - Client disconnected with IP: /0:0:0:0:0:0:0:1:58503
+[2022-02-09 13:45:57] DEBUG - [/login] Client disconnected (Session-ID: 5d5999da-2a95-437f-b0f3-2fa19beb5520)
+[2022-02-09 13:45:58] DEBUG - [/websockets] Client connected with Session-ID: d0314db6-19c8-4e04-a0d1-6fface9d9696 IP: /0:0:0:0:0:0:0:1:58529
+[2022-02-09 13:45:58] INFO - Client connected with Session-ID: d0314db6-19c8-4e04-a0d1-6fface9d9696 IP: /0:0:0:0:0:0:0:1:58529
+[2022-02-09 13:46:00] DEBUG - [/websockets] Client disconnected (Session-ID: d0314db6-19c8-4e04-a0d1-6fface9d9696)
+[2022-02-09 13:46:01] DEBUG - [/websockets] Client connected with Session-ID: 1e48cdfe-493c-4a80-934f-afed2ddb2a25 IP: /0:0:0:0:0:0:0:1:58531
+[2022-02-09 13:46:01] INFO - Client connected with Session-ID: 1e48cdfe-493c-4a80-934f-afed2ddb2a25 IP: /0:0:0:0:0:0:0:1:58531
+[2022-02-09 13:46:21] INFO - The program is trying to start...
+[2022-02-09 13:46:21] INFO - Config was successfully loaded!
+[2022-02-09 13:46:21] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:46:21] INFO - The program successfully started!
+[2022-02-09 13:46:21] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:46:21] DEBUG - [/websockets] Client connected with Session-ID: 03a2d843-e2d9-437b-8806-3f297dc987a7 IP: /127.0.0.1:58560
+[2022-02-09 13:46:21] DEBUG - [/websockets] Client connected with Session-ID: 4e7d608b-c7e4-42c6-95fc-ea06fc3cacaf IP: /0:0:0:0:0:0:0:1:58534
+[2022-02-09 13:46:21] INFO - Client connected with Session-ID: 03a2d843-e2d9-437b-8806-3f297dc987a7 IP: /127.0.0.1:58560
+[2022-02-09 13:46:21] INFO - Client connected with Session-ID: 4e7d608b-c7e4-42c6-95fc-ea06fc3cacaf IP: /0:0:0:0:0:0:0:1:58534
+[2022-02-09 13:46:22] DEBUG - [/websockets] Client disconnected (Session-ID: 03a2d843-e2d9-437b-8806-3f297dc987a7)
+[2022-02-09 13:46:22] DEBUG - [/websockets] Client connected with Session-ID: 2e6673df-9ddc-4b92-a6f5-7c91f3c18e4e IP: /0:0:0:0:0:0:0:1:58564
+[2022-02-09 13:46:22] INFO - Client connected with Session-ID: 2e6673df-9ddc-4b92-a6f5-7c91f3c18e4e IP: /0:0:0:0:0:0:0:1:58564
+[2022-02-09 13:46:25] DEBUG - [/websockets] Client disconnected (Session-ID: 2e6673df-9ddc-4b92-a6f5-7c91f3c18e4e)
+[2022-02-09 13:46:25] DEBUG - [/websockets] Client connected with Session-ID: b8712ab6-d294-4263-9410-e7cc61bd53d9 IP: /0:0:0:0:0:0:0:1:58565
+[2022-02-09 13:46:25] INFO - Client connected with Session-ID: b8712ab6-d294-4263-9410-e7cc61bd53d9 IP: /0:0:0:0:0:0:0:1:58565
+[2022-02-09 13:47:15] INFO - The program is trying to start...
+[2022-02-09 13:47:15] INFO - Config was successfully loaded!
+[2022-02-09 13:47:15] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:47:16] INFO - The program successfully started!
+[2022-02-09 13:47:16] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:47:16] DEBUG - [/websockets] Client connected with Session-ID: 628bd53b-4bc8-412d-80ed-a3ee8e195769 IP: /0:0:0:0:0:0:0:1:58605
+[2022-02-09 13:47:16] DEBUG - [/websockets] Client connected with Session-ID: 189cff31-35a0-4138-a3b8-21d00a7c9e4a IP: /127.0.0.1:58586
+[2022-02-09 13:47:16] INFO - Client connected with Session-ID: 628bd53b-4bc8-412d-80ed-a3ee8e195769 IP: /0:0:0:0:0:0:0:1:58605
+[2022-02-09 13:47:16] INFO - Client connected with Session-ID: 189cff31-35a0-4138-a3b8-21d00a7c9e4a IP: /127.0.0.1:58586
+[2022-02-09 13:47:46] INFO - The program is trying to start...
+[2022-02-09 13:47:46] INFO - Config was successfully loaded!
+[2022-02-09 13:47:46] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:47:47] INFO - The program successfully started!
+[2022-02-09 13:47:47] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:47:47] DEBUG - [/websockets] Client connected with Session-ID: 65e84081-e7a4-425f-83a4-2337e75cff57 IP: /0:0:0:0:0:0:0:1:58613
+[2022-02-09 13:47:47] DEBUG - [/websockets] Client connected with Session-ID: 4c871cf4-b648-40f9-a92a-9adabfa69a48 IP: /127.0.0.1:58632
+[2022-02-09 13:47:47] INFO - Client connected with Session-ID: 65e84081-e7a4-425f-83a4-2337e75cff57 IP: /0:0:0:0:0:0:0:1:58613
+[2022-02-09 13:47:47] INFO - Client connected with Session-ID: 4c871cf4-b648-40f9-a92a-9adabfa69a48 IP: /127.0.0.1:58632
+[2022-02-09 13:47:48] DEBUG - [/websockets] Client disconnected (Session-ID: 65e84081-e7a4-425f-83a4-2337e75cff57)
+[2022-02-09 13:47:48] DEBUG - [/websockets] Client connected with Session-ID: 68e06a5d-1208-41d0-bc9e-d59c05bd8806 IP: /0:0:0:0:0:0:0:1:58639
+[2022-02-09 13:47:48] INFO - Client connected with Session-ID: 68e06a5d-1208-41d0-bc9e-d59c05bd8806 IP: /0:0:0:0:0:0:0:1:58639
+[2022-02-09 13:47:52] INFO - User logged in successfully (Session-ID: 68e06a5d-1208-41d0-bc9e-d59c05bd8806, IP: /0:0:0:0:0:0:0:1:58639
+[2022-02-09 13:47:52] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:58639
+[2022-02-09 13:47:52] DEBUG - [/websockets] Client disconnected (Session-ID: 68e06a5d-1208-41d0-bc9e-d59c05bd8806)
+[2022-02-09 13:47:53] DEBUG - [/login] Client connected with Session-ID: 74e6aa0e-6127-4707-ae63-7cd9dc9f31b6 IP: /0:0:0:0:0:0:0:1:58641
+[2022-02-09 13:48:24] INFO - The program is trying to start...
+[2022-02-09 13:48:24] INFO - Config was successfully loaded!
+[2022-02-09 13:48:24] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:48:25] INFO - The program successfully started!
+[2022-02-09 13:48:25] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:48:25] DEBUG - [/websockets] Client connected with Session-ID: 4b860ea5-5d6d-43b4-b55e-b99c1719123d IP: /127.0.0.1:58649
+[2022-02-09 13:48:25] DEBUG - [/login] Client connected with Session-ID: aa0ba8f4-7900-425b-80a3-26879f5b058b IP: /0:0:0:0:0:0:0:1:58667
+[2022-02-09 13:48:25] INFO - Client connected with Session-ID: 4b860ea5-5d6d-43b4-b55e-b99c1719123d IP: /127.0.0.1:58649
+[2022-02-09 13:48:25] DEBUG - [/login] Client connected with Session-ID: e3ecd28b-1a34-4af4-ad49-f9c94ff94e6e IP: /127.0.0.1:58668
+[2022-02-09 13:48:25] INFO - Client disconnected with IP: /127.0.0.1:58668
+[2022-02-09 13:48:26] DEBUG - [/login] Client disconnected (Session-ID: e3ecd28b-1a34-4af4-ad49-f9c94ff94e6e)
+[2022-02-09 13:48:26] DEBUG - [/login] Client disconnected (Session-ID: aa0ba8f4-7900-425b-80a3-26879f5b058b)
+[2022-02-09 13:48:26] DEBUG - [/websockets] Client connected with Session-ID: b965938a-f750-46ca-97de-5f57993013a2 IP: /0:0:0:0:0:0:0:1:58674
+[2022-02-09 13:48:26] INFO - Client connected with Session-ID: b965938a-f750-46ca-97de-5f57993013a2 IP: /0:0:0:0:0:0:0:1:58674
+[2022-02-09 13:48:32] DEBUG - [/websockets] Client disconnected (Session-ID: b965938a-f750-46ca-97de-5f57993013a2)
+[2022-02-09 13:48:33] DEBUG - [/websockets] Client connected with Session-ID: 6dcd1158-3fbb-461f-b54f-33a23231a6d8 IP: /0:0:0:0:0:0:0:1:58683
+[2022-02-09 13:48:33] INFO - Client connected with Session-ID: 6dcd1158-3fbb-461f-b54f-33a23231a6d8 IP: /0:0:0:0:0:0:0:1:58683
+[2022-02-09 13:48:37] INFO - User logged in successfully (Session-ID: 6dcd1158-3fbb-461f-b54f-33a23231a6d8, IP: /0:0:0:0:0:0:0:1:58683
+[2022-02-09 13:48:37] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:58683
+[2022-02-09 13:48:37] DEBUG - [/websockets] Client disconnected (Session-ID: 6dcd1158-3fbb-461f-b54f-33a23231a6d8)
+[2022-02-09 13:48:37] DEBUG - [/login] Client connected with Session-ID: de899aa8-b41b-4c9d-8b66-36d9c97a1883 IP: /0:0:0:0:0:0:0:1:58685
+[2022-02-09 13:48:44] DEBUG - [/login] Client disconnected (Session-ID: de899aa8-b41b-4c9d-8b66-36d9c97a1883)
+[2022-02-09 13:53:25] DEBUG - [/websockets] Client disconnected (Session-ID: 4b860ea5-5d6d-43b4-b55e-b99c1719123d)
+[2022-02-09 13:53:25] DEBUG - [/websockets] Client connected with Session-ID: 63af14a6-e599-4ad5-8314-b8b13f6575ed IP: /0:0:0:0:0:0:0:1:62130
+[2022-02-09 13:53:25] INFO - Client connected with Session-ID: 63af14a6-e599-4ad5-8314-b8b13f6575ed IP: /0:0:0:0:0:0:0:1:62130
+[2022-02-09 13:58:25] DEBUG - [/websockets] Client disconnected (Session-ID: 63af14a6-e599-4ad5-8314-b8b13f6575ed)
+[2022-02-09 13:58:25] DEBUG - [/websockets] Client connected with Session-ID: 66979261-cb17-4214-8822-59ff7c8a09c6 IP: /0:0:0:0:0:0:0:1:62307
+[2022-02-09 13:58:25] INFO - Client connected with Session-ID: 66979261-cb17-4214-8822-59ff7c8a09c6 IP: /0:0:0:0:0:0:0:1:62307
+[2022-02-09 13:59:02] INFO - The program is trying to start...
+[2022-02-09 13:59:03] INFO - Config was successfully loaded!
+[2022-02-09 13:59:03] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:59:03] INFO - The program successfully started!
+[2022-02-09 13:59:03] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 13:59:03] DEBUG - [/websockets] Client connected with Session-ID: ed1b4976-216e-4d1b-a404-ba65f8803f71 IP: /127.0.0.1:62325
+[2022-02-09 13:59:03] INFO - Client connected with Session-ID: ed1b4976-216e-4d1b-a404-ba65f8803f71 IP: /127.0.0.1:62325
+[2022-02-09 13:59:06] DEBUG - [/websockets] Client connected with Session-ID: 312f35ea-81a8-4ef1-87ff-bda009f06e66 IP: /0:0:0:0:0:0:0:1:62350
+[2022-02-09 13:59:06] INFO - Client connected with Session-ID: 312f35ea-81a8-4ef1-87ff-bda009f06e66 IP: /0:0:0:0:0:0:0:1:62350
+[2022-02-09 13:59:09] INFO - User logged in successfully (Session-ID: 312f35ea-81a8-4ef1-87ff-bda009f06e66, IP: /0:0:0:0:0:0:0:1:62350
+[2022-02-09 13:59:09] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:62350
+[2022-02-09 13:59:09] DEBUG - [/websockets] Client disconnected (Session-ID: 312f35ea-81a8-4ef1-87ff-bda009f06e66)
+[2022-02-09 13:59:10] DEBUG - [/login] Client connected with Session-ID: df35c2a8-1300-42b4-bcae-6361c8becbf0 IP: /0:0:0:0:0:0:0:1:62352
+[2022-02-09 13:59:58] INFO - The program is trying to start...
+[2022-02-09 13:59:58] INFO - Config was successfully loaded!
+[2022-02-09 13:59:58] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 13:59:58] INFO - The program successfully started!
+[2022-02-09 13:59:58] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 14:24:47] INFO - The program is trying to start...
+[2022-02-09 14:24:47] INFO - Config was successfully loaded!
+[2022-02-09 14:24:47] WARNING - Test Mode active! To disable, delete the file "testing.xyz" from the folder!
+[2022-02-09 14:24:48] INFO - The program successfully started!
+[2022-02-09 14:24:48] WARNING - Debug Messages Enabled! To turn off, change "debugMSG=true" to "debugMSG=false" in your server.cfg!
+[2022-02-09 14:24:51] DEBUG - [/websockets] Client connected with Session-ID: 277b06d7-0141-4170-89e2-35f4f27552ff IP: /0:0:0:0:0:0:0:1:60183
+[2022-02-09 14:24:51] INFO - Client connected with Session-ID: 277b06d7-0141-4170-89e2-35f4f27552ff IP: /0:0:0:0:0:0:0:1:60183
+[2022-02-09 14:24:56] DEBUG - [/websockets] Client disconnected (Session-ID: 277b06d7-0141-4170-89e2-35f4f27552ff)
+[2022-02-09 14:24:56] DEBUG - [/websockets] Client connected with Session-ID: 0666d4d6-2008-46f0-90cc-0c105ee3c5b9 IP: /0:0:0:0:0:0:0:1:60184
+[2022-02-09 14:24:56] INFO - Client connected with Session-ID: 0666d4d6-2008-46f0-90cc-0c105ee3c5b9 IP: /0:0:0:0:0:0:0:1:60184
+[2022-02-09 14:25:01] DEBUG - [/websockets] Client disconnected (Session-ID: 0666d4d6-2008-46f0-90cc-0c105ee3c5b9)
+[2022-02-09 14:25:01] DEBUG - [/websockets] Client connected with Session-ID: b5ad1631-f05c-4144-a686-52e134637467 IP: /0:0:0:0:0:0:0:1:60190
+[2022-02-09 14:25:01] INFO - Client connected with Session-ID: b5ad1631-f05c-4144-a686-52e134637467 IP: /0:0:0:0:0:0:0:1:60190
+[2022-02-09 14:25:04] DEBUG - [/websockets] Client disconnected (Session-ID: b5ad1631-f05c-4144-a686-52e134637467)
+[2022-02-09 14:25:04] DEBUG - [/websockets] Client connected with Session-ID: 7bd9ad09-5d4a-4960-8a1e-dcb5dd98e91f IP: /0:0:0:0:0:0:0:1:60192
+[2022-02-09 14:25:04] INFO - Client connected with Session-ID: 7bd9ad09-5d4a-4960-8a1e-dcb5dd98e91f IP: /0:0:0:0:0:0:0:1:60192
+[2022-02-09 14:25:08] DEBUG - [/websockets] Client disconnected (Session-ID: 7bd9ad09-5d4a-4960-8a1e-dcb5dd98e91f)
+[2022-02-09 14:25:08] DEBUG - [/websockets] Client connected with Session-ID: 4cf298e0-a990-4184-9c8a-bcbd024f9844 IP: /0:0:0:0:0:0:0:1:60193
+[2022-02-09 14:25:08] INFO - Client connected with Session-ID: 4cf298e0-a990-4184-9c8a-bcbd024f9844 IP: /0:0:0:0:0:0:0:1:60193
+[2022-02-09 14:25:22] INFO - User logged in successfully (Session-ID: 4cf298e0-a990-4184-9c8a-bcbd024f9844, IP: /0:0:0:0:0:0:0:1:60193
+[2022-02-09 14:25:22] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:60193
+[2022-02-09 14:25:22] DEBUG - [/websockets] Client disconnected (Session-ID: 4cf298e0-a990-4184-9c8a-bcbd024f9844)
+[2022-02-09 14:25:22] DEBUG - [/login] Client connected with Session-ID: f4e5c4d2-e4e9-48ed-80f8-b26eafe9b5ea IP: /0:0:0:0:0:0:0:1:60203
+[2022-02-09 14:25:27] DEBUG - [/login] Client disconnected (Session-ID: f4e5c4d2-e4e9-48ed-80f8-b26eafe9b5ea)
+[2022-02-09 14:25:27] DEBUG - [/login] Client connected with Session-ID: e508afdd-8d88-40b0-905a-fea55ba85a98 IP: /0:0:0:0:0:0:0:1:60206
+[2022-02-09 14:25:27] INFO - Client disconnected with IP: /0:0:0:0:0:0:0:1:60206
+[2022-02-09 14:25:27] DEBUG - [/login] Client disconnected (Session-ID: e508afdd-8d88-40b0-905a-fea55ba85a98)
+[2022-02-09 14:25:27] DEBUG - [/websockets] Client connected with Session-ID: bbafb49f-0f5b-4aa5-a21a-1512ba865540 IP: /0:0:0:0:0:0:0:1:60207
+[2022-02-09 14:25:27] INFO - Client connected with Session-ID: bbafb49f-0f5b-4aa5-a21a-1512ba865540 IP: /0:0:0:0:0:0:0:1:60207
+[2022-02-09 14:29:52] INFO - User logged in successfully (Session-ID: bbafb49f-0f5b-4aa5-a21a-1512ba865540, IP: /0:0:0:0:0:0:0:1:60207
+[2022-02-09 14:29:52] INFO - Client logged in successfully with IP: /0:0:0:0:0:0:0:1:60207
+[2022-02-09 14:29:52] DEBUG - [/websockets] Client disconnected (Session-ID: bbafb49f-0f5b-4aa5-a21a-1512ba865540)
+[2022-02-09 14:29:53] DEBUG - [/login] Client connected with Session-ID: f0d83dfc-4881-42f8-8b03-e6e18f8656ea IP: /0:0:0:0:0:0:0:1:60288
+[2022-02-09 14:29:56] DEBUG - [/login] Client disconnected (Session-ID: f0d83dfc-4881-42f8-8b03-e6e18f8656ea)
+[2022-02-09 14:29:56] DEBUG - [/login] Client connected with Session-ID: 8a364645-fe4e-4bc6-933f-2f93278b6f29 IP: /0:0:0:0:0:0:0:1:60291
+[2022-02-09 14:29:56] INFO - Client disconnected with IP: /0:0:0:0:0:0:0:1:60291
+[2022-02-09 14:29:56] DEBUG - [/login] Client disconnected (Session-ID: 8a364645-fe4e-4bc6-933f-2f93278b6f29)
+[2022-02-09 14:29:57] DEBUG - [/websockets] Client connected with Session-ID: 014d7bd5-82d1-44c4-bd45-c4a4556441c5 IP: /0:0:0:0:0:0:0:1:60292
+[2022-02-09 14:29:57] INFO - Client connected with Session-ID: 014d7bd5-82d1-44c4-bd45-c4a4556441c5 IP: /0:0:0:0:0:0:0:1:60292
+[2022-02-09 14:32:58] DEBUG - [/websockets] Client disconnected (Session-ID: 014d7bd5-82d1-44c4-bd45-c4a4556441c5)

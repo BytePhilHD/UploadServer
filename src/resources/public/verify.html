@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Bootstrap-Callout-Info.css">
-    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Features-Boxed.css">
     <link rel="stylesheet" href="assets/css/Formulario-Farmacia.css">
     <link rel="stylesheet" href="assets/css/FPE-Gentella-form-elements-1.css">
@@ -24,7 +23,7 @@
 
 <body id="page-top">
     <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Apply-Server</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button></div>
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="./">Apply-Server</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button></div>
     </nav>
     <header class="masthead" style="background-image: url(&quot;assets/img/star-sky.jpg&quot;);">
         <div class="intro-body">
@@ -43,7 +42,11 @@
             if (location.port != 0) {
                 i = location.port;
             }
-            ws = new WebSocket("ws://" + location.hostname + ":" + i + "/verify");
+            if (location.protocol === "http:") {
+                ws = new WebSocket("ws://" + location.hostname + ":" + i + "/verify");
+            } else if (location.protocol === "https:") {
+                ws = new WebSocket("wss://" + location.hostname + ":" + 443 + "/verify");
+            }
 
             ws.onopen = openEvent => {
                 console.log('INFO - Connection to Server established!');
@@ -51,9 +54,6 @@
                     ws.send(location.search);
                     console.log("send " + location.search);
                 }
-            }
-            ws.onclose = closeEvent => {
-                setupWebSocket();
             }
             ws.onerror = errorEvent => {
                 console.log('Server Error!');
@@ -63,6 +63,7 @@
                 if (wsinput.includes("VERIFIED")) {
                     document.getElementById("verify").innerHTML = "Successfully verified your account!";
                     console.log("Successfully verified!");
+                    ws.close();
 
                 } else if (wsinput.includes("WRONG")) {
                     document.getElementById("verify").innerHTML = "Something went wrong! Please check your Link again!";

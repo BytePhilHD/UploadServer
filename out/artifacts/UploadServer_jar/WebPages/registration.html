@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Bootstrap-Callout-Info.css">
-    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Features-Boxed.css">
     <link rel="stylesheet" href="assets/css/Formulario-Farmacia.css">
     <link rel="stylesheet" href="assets/css/FPE-Gentella-form-elements-1.css">
@@ -23,28 +22,38 @@
 </head>
 
 <body id="page-top">
-    <nav class="navbar navbar-light navbar-expand-md text-center navbar navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container"><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button><a class="navbar-brand text-center js-scroll-trigger"
-                href="#" style="width: 0;">Apply-Server</a></div>
-    </nav>
-    <div class="login-dark" style="height: 1240px;">    <form method="post">
+<nav class="navbar navbar-light navbar-expand-md text-center navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" type="button"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i
+                class="fa fa-bars"></i></button>
+        <a class="navbar-brand text-center js-scroll-trigger"
+           href="./" style="width: 0;">Apply-Server</a></div>
+</nav>
+<div class="login-dark" style="height: 1240px;">
+    <div class="login-group">
         <h2 class="sr-only">Login Form</h2>
         <div class="illustration" style="height: 154px;"><i class="icon ion-ios-personadd-outline"
                                                             style="height: 0px;"></i></div>
         <p class="text-center" style="height: 16px;">Create your Account</p>
-        
+
         <div class="form-group"><input id="username" class="form-control" name="password" placeholder="Username"/></div>
-        <div class="form-group"><input id="email" type="email" class="form-control" name="email" placeholder="Email"/></div>
-        <div class="form-group"><input id="pw" type="password" class="form-control" name="password" placeholder="Password"/></div>
+        <div class="form-group"><input id="email" type="email" class="form-control" name="email" placeholder="Email"/>
+        </div>
+        <div class="form-group"><input id="pw" type="password" class="form-control" name="password"
+                                       placeholder="Password"/></div>
 
         <p id="console" class="text-center" style="height: 10px;"></p>
         <div class="form-group">
             <button onclick="manageInput()" class="btn btn-primary btn-block" type="submit">Create Account</button>
         </div>
 
+    </div>
+
     <script>
         window.onload = setupWebSocket;
-        
+
+        var input = document.getElementById("pw");
         input.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
@@ -55,13 +64,16 @@
         let ws;
         const test = true;
 
-
         function manageInput() {
-          let inpw = document.getElementById("pw");
-          let inuser = document.getElementById("username");
-          let inemail = document.getElementById("email");
-            
-            ws.send("LOGIN: " + email + "|*|" + pw);          // "|*|" is placeholder between email and password, so Login.java can detect those
+            let inpw = document.getElementById("pw").value;
+            let inuser = document.getElementById("username").value;
+            let inemail = document.getElementById("email").value;
+            document.getElementById('pw').value = '';
+            if (inpw !== "" && inuser !== "" && inemail !== "") {
+                ws.send(inuser + "|*|" + inemail + "|'|" + inpw);          // "|*|" is placeholder between email and password, so Login.java can detect those
+            } else {
+                window.location.href = location.protocol + "registration?empty";
+            }
         }
 
         function setupWebSocket() {
@@ -69,19 +81,11 @@
             if (location.port != 0) {
                 i = location.port;
             }
-            if (location.search != 0) {
-                if (location.search.includes("wrongpw")) {
-                    document.getElementById("console").innerHTML = "Wrong password!";
-                    document.getElementById("console").value = "Wrong password!";
-                    //location.search = "";
-                } else if (location.search.includes("renew")) {
-                    document.getElementById("console").innerHTML = "Please log in again!";
-                    document.getElementById("console").value = "Please log in again!";
-                } else {
-                    window.location.href = location.protocol + "/login";
-                }
+            if (location.protocol === "http:") {
+                ws = new WebSocket("ws://" + location.hostname + ":" + i + "/register");
+            } else if (location.protocol === "https:") {
+                ws = new WebSocket("wss://" + location.hostname + ":" + 443 + "/register");
             }
-            ws = new WebSocket("ws://" + location.hostname + ":" + i + "/checklogin");
 
             ws.onopen = openEvent => {
                 console.log('INFO - Connection to Server established!');
@@ -94,29 +98,27 @@
             }
             ws.onmessage = messageEvent => {
                 var wsinput = messageEvent.data;
-                if (wsinput.includes("CORRECT")) {
-                    wsinput = wsinput.replace("CORRECT ", "");
-                    document.getElementById("console").innerHTML = "Correct password!";
-                    document.getElementById("console").value = "Correct password!";
-                    window.location.href = location.protocol + "home?" + wsinput;
-
-                } else if (wsinput.includes("WRONG")) {
-                    window.location.href = location.protocol + "login?wrongpw"
+                if (wsinput.includes("SENT")) {
+                    window.location.href = location.protocol + "login?registration";
+                }
+                else if (wsinput.includes("ALREADY")) {
+                    document.getElementById("console").innerHTML = "That username already exists!";
                 }
             }
         }
 
-    </script></div>
-    <footer>
-        <div class="container text-center">
-            <p>Copyright ©&nbsp;Apply-Server 2021</p>
-        </div>
-    </footer>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="assets/js/grayscale.js"></script>
-    <script src="assets/js/MUSA_form-wizard.js"></script>
+    </script>
+</div>
+<footer>
+    <div class="container text-center">
+        <p>Copyright ©&nbsp;Apply-Server 2021</p>
+    </div>
+</footer>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="assets/js/grayscale.js"></script>
+<script src="assets/js/MUSA_form-wizard.js"></script>
 </body>
 
 </html>

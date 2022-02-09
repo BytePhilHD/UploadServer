@@ -23,42 +23,82 @@
 </head>
 
 <body id="page-top">
-    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Apply-Server</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button></div>
-    </nav>
-    <div class="contact-clean" style="background-color: rgb(49,76,98);height: 908px;padding: 218px;"><form method="post" style="height: 594px;background-color: #edfdfe;width: 659px;">
+<nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Apply-Server</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button></div>
+</nav>
+<div class="contact-clean" style="background-color: rgb(49,76,98);height: 908px;padding: 218px;">
     <h2 class="text-center">Application</h2>
-    <div class="form-group"><input type="text" class="form-control" name="name" placeholder="Name" /></div><input type="email" class="form-control is-invalid" name="email" placeholder="Email" /><small class="form-text text-danger">Please enter a correct email address.</small><input
-        type="text" class="form-control" name="job" placeholder="Job" /><span style="height: -42px;font-size: -116px;opacity: 0;width: -50px;margin: 0;padding: 0;font-family: Cabin, sans-serif;">aaa</span>
-    <div class="form-group"><textarea class="form-control" name="applicationtext" placeholder="Application" rows="50" style="height: 217px;"></textarea></div>
-    <div class="form-group"><button class="btn btn-primary" type="submit">send </button></div>
-</form></div>
-    <section id="contact" class="content-section text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2>Contact us</h2>
-                    <p>Feel free to leave us a comment on the<a href="#">&nbsp;Grayscale template overview page</a>&nbsp;to give some feedback about this theme!</p>
-                    <ul class="list-inline banner-social-buttons">
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-google-plus fa-fw"></i><span class="network-name">&nbsp; Google+</span></button></li>
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-twitter fa-fw"></i><span class="network-name">&nbsp;Twitter</span></button></li>
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-github fa-fw"></i><span class="network-name">&nbsp;github</span></button></li>
-                    </ul>
-                </div>
+    <div class="form-group"><input id="name" type="text" class="form-control" name="name" placeholder="Name" /></div><input id="email" type="email" class="form-control" name="email" placeholder="Email" /><span style="height: -42px;font-size: -116px;opacity: 0;width: -50px;margin: 0;padding: 0;font-family: Cabin, sans-serif;">aaa</span><input
+        id="job" type="text" class="form-control" name="job" placeholder="Job" /><span style="height: -42px;font-size: -116px;opacity: 0;width: -50px;margin: 0;padding: 0;font-family: Cabin, sans-serif;">aaa</span>
+    <div class="form-group"><textarea id="applicationtext" class="form-control" name="applicationtext" placeholder="Application" rows="50" style="height: 217px;"></textarea></div>
+    <div class="form-group"><button onclick="manageInput()" class="btn btn-primary" type="submit">send </button></div></div>
+<section id="contact" class="content-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>Contact us</h2>
+                <p>Feel free to leave us a comment on the<a href="#">&nbsp;Grayscale template overview page</a>&nbsp;to give some feedback about this theme!</p>
+                <ul class="list-inline banner-social-buttons">
+                    <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-google-plus fa-fw"></i><span class="network-name">&nbsp; Google+</span></button></li>
+                    <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-twitter fa-fw"></i><span class="network-name">&nbsp;Twitter</span></button></li>
+                    <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-github fa-fw"></i><span class="network-name">&nbsp;github</span></button></li>
+                </ul>
             </div>
         </div>
-    </section>
-    <div class="map-clean"></div>
-    <footer>
-        <div class="container text-center">
-            <p>Copyright ©&nbsp;Apply-Server 2022</p>
-        </div>
-    </footer>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="assets/js/grayscale.js"></script>
-    <script src="assets/js/MUSA_form-wizard.js"></script>
+    </div>
+</section>
+<div class="map-clean"></div>
+<footer>
+    <script>
+        window.onload = setupWebSocket;
+        let ws;
+        const test = true;
+
+        function manageInput() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let job = document.getElementById("job").value;
+            let applicationText = document.getElementById("applicationtext").value;
+            if (name != null && email != null && job != null && applicationText != null) {
+                document.getElementById("name").value = '';
+                document.getElementById("email").value = '';
+                document.getElementById("job").value = '';
+                document.getElementById("applicationtext").value = '';
+                ws.send(name + "|*|" + email + "|'|" + job + "|~|" + applicationText);          // "|*|" is placeholder between email and password, so Login.java can detect those
+                window.location.href = location.protocol;
+            } else {
+                console.log("Empty form");
+            }
+        }
+
+        function setupWebSocket() {
+            let i = 80;
+            if (location.port != 0) {
+                i = location.port;
+            }
+            ws = new WebSocket("ws://" + location.hostname + ":" + i + "/application");
+
+            ws.onopen = openEvent => {
+                console.log('INFO - Connection to Server established!');
+            }
+            ws.onclose = closeEvent => {
+                setupWebSocket();
+            }
+            ws.onerror = errorEvent => {
+                console.log('Server Error!');
+            }
+        }
+
+    </script>
+    <div class="container text-center">
+        <p>Copyright ©&nbsp;Apply-Server 2022</p>
+    </div>
+</footer>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="assets/js/grayscale.js"></script>
+<script src="assets/js/MUSA_form-wizard.js"></script>
 </body>
 
 </html>

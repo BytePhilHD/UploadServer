@@ -1,0 +1,10 @@
+#############################
+#                           #
+#     Made by BytePhil.de   #
+#            2021           #
+#############################
+
+The Webpages folder is the folder where all HTML pages are stored.
+You, as an admin, can design your own sites, if you want.
+
+If you want to get the defaults back, delete the "Webpages" folder and restart the JAR.
