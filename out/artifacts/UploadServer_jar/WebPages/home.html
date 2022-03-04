@@ -64,7 +64,7 @@
     <p id="filecount"><br /></p>
     <div id="list"></div>
     <form method="post" action="/upload" enctype="multipart/form-data">
-        <input id="form-files" class="form-control-file invisible" type="file" name="files" multiple /><button class="btn btn-outline-primary btn-block" type="submit">Submit</button><button class="btn btn-danger mt-5" type="reset" onclick="clearFiles()">Reset</button>
+        <input id="form-files" class="form-control-file invisible" type="file" name="files" multiple /><button class="btn btn-outline-primary btn-block" onclick="autoLogin()" type="submit">Submit</button><button class="btn btn-danger mt-5" type="reset" onclick="clearFiles()">Reset</button>
     </form>
 </div>
                             </div>
@@ -77,12 +77,16 @@
     <div class="features-boxed" style="filter: saturate(99%);background-size: cover;background-position: 1%90%;background-color: transparent;"></div>
     <div class="map-clean"></div><footer>
     <div class="container text-center">
-        <p>Copyright © Upload-Server 2021 by BytePhil</p>
+        <p>Copyright © Upload-Server 2022 by BytePhil</p>
     </div>
 </footer>
 <script>
     window.onload = setupWebSocket;
     let ws;
+
+    function autoLogin() {
+        ws.send("GETID");
+    }
 
     function manageInput() {
         const urlCreator = window.URL || window.webkitURL;
@@ -152,6 +156,9 @@
             let wsinput = messageEvent.data;
             if (wsinput.includes("CLOSE")) {
                 window.location.href = location.protocol + "login?renew";
+            }
+            else if (wsinput.includes("NEWID")) {
+                //window.location.href = location.protocol + "home?" + wsinput.replace("NEWID ", "");
             }
             else {
                 let iend = wsinput.indexOf("|*|");

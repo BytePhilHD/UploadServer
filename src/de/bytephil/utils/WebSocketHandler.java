@@ -4,6 +4,9 @@ import de.bytephil.main.Main;
 import de.bytephil.users.Application;
 import de.bytephil.users.ApplicationService;
 import de.bytephil.users.UserService;
+import io.javalin.http.UploadedFile;
+
+import java.io.File;
 
 public class WebSocketHandler {
 
@@ -55,4 +58,5 @@ public class WebSocketHandler {
         Application application = new Application(name, email, job, applicationtext);
         new ApplicationService().createApplication(application);
     }
+
 }

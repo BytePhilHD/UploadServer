@@ -12,6 +12,7 @@ import de.bytephil.utils.*;
 import de.bytephil.utils.Console;
 import io.javalin.Javalin;
 import io.javalin.core.util.FileUtil;
+import io.javalin.http.UploadedFile;
 import io.javalin.http.staticfiles.Location;
 import jline.internal.Log;
 import org.eclipse.jetty.server.Connector;
@@ -42,6 +43,7 @@ public class Main {
     public static String username;
     private static ArrayList<String> clients = new ArrayList<>();
     private static ArrayList<String> logtIn = new ArrayList<>();
+    private static ArrayList<UploadedFile> uploadedFiles = new ArrayList<>();
 
     public static ServerConfiguration config;
     public final String version = "0.0.6";
@@ -162,7 +164,10 @@ public class Main {
             });
             ws.onMessage(ctx -> {
                 String message = ctx.message();
-                if (message.contains("LOGIN")) {
+                if (message.contains("GETID")) {
+                    ctx.send("NEWID " + ctx.getSessionId());
+                    logtIn.add(ctx.getSessionId());
+                } else if (message.contains("LOGIN")) {
                     message = message.replace("LOGIN: ", "").replace("?", "");
 
                     if (logtIn.contains(message)) {
@@ -238,6 +243,8 @@ public class Main {
             ctx.render("/public/home.html");
             ctx.uploadedFiles("files").forEach(uploadedFile -> {
                 FileUtil.streamToFile(uploadedFile.getContent(), "upload/" + uploadedFile.getFilename());
+                uploadedFiles.add(uploadedFile);
+                //WebSocketHandler.uploadDate(uploadedFile);
             });
         });
         while (true) {

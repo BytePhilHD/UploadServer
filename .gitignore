@@ -1,2 +1,3 @@
 # Project exclude paths
 /target/
+/out/artifacts/UploadServer_jar/upload/
