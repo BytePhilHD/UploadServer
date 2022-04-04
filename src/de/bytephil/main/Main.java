@@ -12,6 +12,7 @@ import de.bytephil.utils.*;
 import de.bytephil.utils.Console;
 import io.javalin.Javalin;
 import io.javalin.core.util.FileUtil;
+import io.javalin.http.Cookie;
 import io.javalin.http.UploadedFile;
 import io.javalin.http.staticfiles.Location;
 import jline.internal.Log;
@@ -21,8 +22,12 @@ import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 
 import java.io.*;
+import java.net.InetSocketAddress;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main {
@@ -43,6 +48,7 @@ public class Main {
     public static String username;
     private static ArrayList<String> clients = new ArrayList<>();
     private static ArrayList<String> logtIn = new ArrayList<>();
+    private static HashMap<String, String> logtInIPs = new HashMap<>();
     private static ArrayList<UploadedFile> uploadedFiles = new ArrayList<>();
 
     public static ServerConfiguration config;
@@ -167,6 +173,10 @@ public class Main {
                 if (message.contains("GETID")) {
                     ctx.send("NEWID " + ctx.getSessionId());
                     logtIn.add(ctx.getSessionId());
+
+                    Console.printout("BUTTON PRESSED", MessageType.DEBUG);
+
+
                 } else if (message.contains("LOGIN")) {
                     message = message.replace("LOGIN: ", "").replace("?", "");
 
@@ -174,7 +184,11 @@ public class Main {
                         logtIn.add(ctx.getSessionId());
                         logtIn.remove(message);
 
-                        String username = getUsername(message);
+                        ctx.cookieMap().put("id", "hallo");
+
+                        System.out.println(ctx.cookieMap().toString());
+
+                        String username = getUsername(message);             // Getting
                         String rank = getRank(username);
                         ctx.send("IN*FO" + username + "|*|" + rank);
 
@@ -202,17 +216,7 @@ public class Main {
                 }
             });
         });
-        app.ws("/register", ws -> {
-            ws.onMessage(ctx -> {
-                String message = ctx.message();
-                boolean alreadyExists = WebSocketHandler.createAccount(message);
-                if (!alreadyExists) {
-                    ctx.send("ALREADY");
-                } else {
-                    ctx.send("SENT");
-                }
-            });
-        });
+
         app.ws("/application", ws -> {
             ws.onMessage(ctx -> {
                 String message = ctx.message();
@@ -242,8 +246,19 @@ public class Main {
         app.post("/upload", ctx -> {
             ctx.render("/public/home.html");
             ctx.uploadedFiles("files").forEach(uploadedFile -> {
-                FileUtil.streamToFile(uploadedFile.getContent(), "upload/" + uploadedFile.getFilename());
+                String time = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+                FileUtil.streamToFile(uploadedFile.getContent(), "upload/" + time + "/" + uploadedFile.getFilename());
+                Console.printout("Saved file", MessageType.DEBUG);
                 uploadedFiles.add(uploadedFile);
+
+                if (ctx.cookieMap().get("id").equalsIgnoreCase("hallo!")) {
+                    System.out.println("ES GEHT!");
+                }
+
+                //System.out.println("Session ID: " + logtInIPs.get(ctx.ip()));
+                //System.out.println("Username " + getUsername(logtInIPs.get(ctx.ip())));
+                //ctx.ip(); Try with getting IP And checking from loged in ones
+
                 //WebSocketHandler.uploadDate(uploadedFile);
             });
         });

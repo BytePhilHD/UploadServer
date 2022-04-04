@@ -159,7 +159,7 @@
             }
             else if (wsinput.includes("NEWID")) {
                 //window.location.href = location.protocol + "home?" + wsinput.replace("NEWID ", "");
-
+                document.getElementById("form1").action = "/upload?" + wsinput.replace("NEWID ", "");
             }
             else {
                 let iend = wsinput.indexOf("|*|");

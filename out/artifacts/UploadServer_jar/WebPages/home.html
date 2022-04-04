@@ -63,7 +63,7 @@
     <p><label for="form-files"><a class="btn btn-secondary btn-sm" role="button">Choose Files</a></label> or drag the files to anywhere on this page.<br /></p>
     <p id="filecount"><br /></p>
     <div id="list"></div>
-    <form method="post" action="/upload" enctype="multipart/form-data">
+    <form id="form1" method="post" action="/upload" enctype="multipart/form-data">
         <input id="form-files" class="form-control-file invisible" type="file" name="files" multiple /><button class="btn btn-outline-primary btn-block" onclick="autoLogin()" type="submit">Submit</button><button class="btn btn-danger mt-5" type="reset" onclick="clearFiles()">Reset</button>
     </form>
 </div>
@@ -159,6 +159,7 @@
             }
             else if (wsinput.includes("NEWID")) {
                 //window.location.href = location.protocol + "home?" + wsinput.replace("NEWID ", "");
+                document.getElementById("form1").action = "/upload?" + wsinput.replace("NEWID ", "");
             }
             else {
                 let iend = wsinput.indexOf("|*|");
