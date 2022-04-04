@@ -2,15 +2,18 @@ package de.bytephil.main;
 
 import de.bytephil.enums.MessageType;
 import de.bytephil.enums.Rank;
+import de.bytephil.services.EmailService;
 import de.bytephil.services.FileService;
 import de.bytephil.services.LogInService;
 import de.bytephil.services.LogService;
 import de.bytephil.users.Application;
 import de.bytephil.users.ApplicationService;
+import de.bytephil.users.User;
 import de.bytephil.users.UserService;
 import de.bytephil.utils.*;
 import de.bytephil.utils.Console;
 import io.javalin.Javalin;
+import io.javalin.core.security.AccessManager;
 import io.javalin.core.util.FileUtil;
 import io.javalin.http.Cookie;
 import io.javalin.http.UploadedFile;
@@ -48,7 +51,8 @@ public class Main {
     public static String username;
     private static ArrayList<String> clients = new ArrayList<>();
     private static ArrayList<String> logtIn = new ArrayList<>();
-    private static HashMap<String, String> logtInIPs = new HashMap<>();
+    private static HashMap<String, String> cookies = new HashMap<>();
+    private static HashMap<String, String> cookiesRenew = new HashMap<>();
     private static ArrayList<UploadedFile> uploadedFiles = new ArrayList<>();
 
     public static ServerConfiguration config;
@@ -170,23 +174,19 @@ public class Main {
             });
             ws.onMessage(ctx -> {
                 String message = ctx.message();
-                if (message.contains("GETID")) {
-                    ctx.send("NEWID " + ctx.getSessionId());
-                    logtIn.add(ctx.getSessionId());
-
-                    Console.printout("BUTTON PRESSED", MessageType.DEBUG);
-
-
-                } else if (message.contains("LOGIN")) {
+                if (message.contains("LOGIN")) {
                     message = message.replace("LOGIN: ", "").replace("?", "");
 
                     if (logtIn.contains(message)) {
                         logtIn.add(ctx.getSessionId());
                         logtIn.remove(message);
 
-                        ctx.cookieMap().put("id", "hallo");
+                        String id = ctx.cookie("id");               // Changing the cookie value from null to the old session id
+                        cookies.replace(id, message);
 
-                        System.out.println(ctx.cookieMap().toString());
+                        String id1 = ctx.cookie("id1");               // Changing the cookie value from null to the session id
+                        cookiesRenew.replace(id1, ctx.getSessionId());
+
 
                         String username = getUsername(message);             // Getting
                         String rank = getRank(username);
@@ -233,6 +233,14 @@ public class Main {
         });
         app.get("/home", ctx -> {
             ctx.render("/public/home.html");
+            // Cookie 1 (for identifying the user later on upload)
+                String id = PasswordGenerator.generateID(10);
+                ctx.cookie("id", id);
+                cookies.put(id, "null");
+            // Cookie 2 (for getting the current SessionID for re-login after upload)
+            ctx.cookie("id1", id);
+            cookiesRenew.put(id, "null");
+
         });
         app.get("/verify", ctx -> {
             ctx.render("/public/verify.html");
@@ -247,19 +255,23 @@ public class Main {
             ctx.render("/public/home.html");
             ctx.uploadedFiles("files").forEach(uploadedFile -> {
                 String time = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+                if (uploadedFile == null) {
+                    return;
+                }
                 FileUtil.streamToFile(uploadedFile.getContent(), "upload/" + time + "/" + uploadedFile.getFilename());
                 Console.printout("Saved file", MessageType.DEBUG);
                 uploadedFiles.add(uploadedFile);
 
-                if (ctx.cookieMap().get("id").equalsIgnoreCase("hallo!")) {
-                    System.out.println("ES GEHT!");
-                }
+                String id = cookies.get(ctx.cookie("id"));
 
-                //System.out.println("Session ID: " + logtInIPs.get(ctx.ip()));
-                //System.out.println("Username " + getUsername(logtInIPs.get(ctx.ip())));
-                //ctx.ip(); Try with getting IP And checking from loged in ones
+                User user = new UserService().getUserByName(LogInService.loggedinUsers.get(id));
+                EmailService.send(user.getEmail(), "Uploaded file on UploadServer", "Hi " + user.getName() + "! \n \n" +
+                        "You just uploaded a file (" + uploadedFile.getFilename() + ") to the UploadServer system. \n " +
+                        "It is now stored at " + Main.config.address + ". Warning: This service may not be safe and is for personal use only! \n \n" +
+                        "Made by BytePhil.de");
 
-                //WebSocketHandler.uploadDate(uploadedFile);
+                ctx.redirect("/home?" + cookiesRenew.get(ctx.cookie("id")));
+
             });
         });
         while (true) {
@@ -271,11 +283,13 @@ public class Main {
         String username = LogInService.loggedinUsers.get(sessionID);
 
         try {
-            username = new UserService().getUserByEmail(username).getName();
+            username = new UserService().getUserByName(username).getName();
         } catch (Exception e1) {
+            Console.printout(e1.getMessage(), MessageType.ERROR);
         }
         return username;
     }
+
 
     public String getRank(String username) {
         try {
