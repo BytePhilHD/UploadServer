@@ -46,8 +46,9 @@
         <div class="intro-body" style="opacity: 1;height: 943px;">
             <div class="container" style="height: 652px;">
                 <div class="intro">
-                    <h2 class="text-center" style="color: rgb(199,215,231);font-size: 44px;">Features </h2>
-                    <p class="text-center" style="color: rgb(255,255,255);">These are three applications</p>
+                    <h2 class="text-center" style="color: rgb(199,215,231);font-size: 44px;">UploadServer </h2>
+                    <p class="text-center" style="color: rgb(255,255,255);">Upload files to the BytePhil Server. Note: This system may not be secure! Upload at own risk!</p>
+                    <p id="consoleText" class="text-center" style="color: rgb(255,255,255);"></p>
                 </div>
                 <div class="row justify-content-center features">
                     <div class="col">
@@ -64,7 +65,7 @@
     <p id="filecount"><br /></p>
     <div id="list"></div>
     <form id="form1" method="post" action="/upload" enctype="multipart/form-data">
-        <input id="form-files" class="form-control-file invisible" type="file" name="files" multiple /><button class="btn btn-outline-primary btn-block" type="submit">Submit</button><button class="btn btn-danger mt-5" type="reset" onclick="clearFiles()">Reset</button>
+        <input id="form-files" class="form-control-file invisible" type="file" name="files" multiple /><button class="btn btn-outline-primary btn-block" type="submit">Submit</button><button class="btn btn-danger mt-5" type="reset" >Reset</button>
     </form>
 </div>
                             </div>
@@ -95,36 +96,6 @@
 
     function setupWebSocket() {
 
-        const applicationDefaultClasses = "col-sm-6 col-md-5 col-lg-4 item";
-        const applicationInnerHTML = "                    <div class=\"card\">\n" +
-            "                        <div class=\"card-body\">\n" +
-            "                            <div class=\"media\">\n" +
-            "                                <div><img class=\"rounded-circle mr-3\" style=\"height: 50px; width: 50px;\" src=\"assets/img/DSC06530.JPG\"></div>\n" +
-            "                                <div class=\"media-body\">\n" +
-            "                                    <ul class=\"list-unstyled fa-ul\">\n" +
-            "                                        <li style=\"font-size: 20px;\"><i class=\"fa fa-user fa-li\"></i><a class=\"name-user\">Application 1</a></li>\n" +
-            "                                        <li style=\"font-size: 18px;\"><i class=\"fa fa-envelope fa-li\"></i><a class=\"email-addr\" href=\"#\">apply@gmail.com</a></li>\n" +
-            "                                    </ul>\n" +
-            "                                </div>\n" +
-            "                            </div>\n" +
-            "                            <div><small>Affinity Score <i class=\"fa fa-info-circle text-info\"></i></small>\n" +
-            "                                <div class=\"progress progress-high\">\n" +
-            "                                    <div class=\"progress-bar bg-danger\" aria-valuenow=\"90\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 90%;\"><span class=\"sr-only\">90%</span></div>\n" +
-            "                                </div>\n" +
-            "                            </div>\n" +
-            "                            <hr>\n" +
-            "                            <p class=\"job\">Job</p>\n" +
-            "                        </div>\n" +
-            "                        <div class=\"card-footer\">\n" +
-            "                            <div class=\"media\">\n" +
-            "                                <div><img class=\"rounded-circle mr-3\" style=\"height: 25px; width: 25px;\" src=\"assets/img/avatar.jpg\"></div>\n" +
-            "                                <div class=\"media-body\"><a href=\"#\"><small class=\"text-uppercase text-muted\">Referred By:</small><br>\n" +
-            "                                    Alberto Gonzalez</a></div>\n" +
-            "                            </div>\n" +
-            "                        </div>\n" +
-            "                    </div>"
-
-        const applications = document.getElementById("applications");
         let i = 80;
         if (location.port != 0) {
             i = location.port;
@@ -135,8 +106,13 @@
             ws = new WebSocket("wss://" + location.hostname  + ":" + 443 + "/login");
         }
 
+        if (location.search.includes("successful")) {
+            document.getElementById("consoleText").innerHTML = "Your file was successfully uploaded! You should have received an email."
+            location.search.replace("successful", "");
+        }
+
         ws.onopen = openEvent => {
-            ws.send("LOGIN: " + location.search);
+            ws.send("LOGIN: " + location.search.replace("successful", ""));
             console.log("INFO: Connection to server established!");
             document.getElementById("yourname").innerHTML = "Your name: Phil";
             document.getElementById("yourrank").innerHTML = "Your rank: Admin";

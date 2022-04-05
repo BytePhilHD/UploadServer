@@ -35,6 +35,13 @@ import java.util.List;
 
 public class Main {
 
+
+    /*
+    /
+    /                          UPLOAD SERVER MADE BY BYTEPHIL.DE
+    /
+     */
+
     private static Javalin app;
 
     private static Main instance;
@@ -56,7 +63,7 @@ public class Main {
     private static ArrayList<UploadedFile> uploadedFiles = new ArrayList<>();
 
     public static ServerConfiguration config;
-    public final String version = "0.0.6";
+    public final String version = "0.0.7";
     public boolean debugMSG = false;
     public boolean testing = false;
 
@@ -100,10 +107,6 @@ public class Main {
 
             //new Test().testMethod();
         }
-
-        // TEST
-
-        // TEST
         startApp();
     }
 
@@ -158,8 +161,6 @@ public class Main {
                     if (LogInService.login(message, ctx.getSessionId())) {
                         ctx.send("CORRECT " + ctx.getSessionId());
                         logtIn.add(ctx.getSessionId());
-                        Console.printout("User logged in successfully (Session-ID: " + ctx.getSessionId() + ", IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
-                        new LogService().writetoFile(new File("logs/log.txt"), "Client logged in successfully with IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
                     } else {
                         ctx.send("WRONG");
                     }
@@ -171,10 +172,12 @@ public class Main {
 
         app.ws("/login", ws -> {
             ws.onConnect(ctx -> {
-                Console.printout("[/login] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.DEBUG);
+                Console.printout("User logged in successfully (Session-ID: " + ctx.getSessionId() + ", IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
+                new LogService().writetoFile(new File("logs/log.txt"), "Client logged in successfully with IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
             });
             ws.onClose(ctx -> {
-                Console.printout("[/login] Client disconnected (Session-ID: " + ctx.getSessionId() + ")", MessageType.DEBUG);
+                Console.printout("User disconnected (Session-ID: " + ctx.getSessionId() + ", IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
+                new LogService().writetoFile(new File("logs/log.txt"), "User disconnected with IP: " + ctx.session.getRemoteAddress(), MessageType.INFO);
             });
             ws.onMessage(ctx -> {
                 String message = ctx.message();
@@ -195,7 +198,7 @@ public class Main {
                         String rank = getRank(username);
                         ctx.send("IN*FO" + username + "|*|" + rank);
 
-                        String oldvalue = LogInService.loggedinUsers.get(message);
+                        String oldvalue = LogInService.loggedinUsers.get(message);              // Removing old sessionID key in case the user gets redirected (after upload) without the login screen
                         LogInService.loggedinUsers.remove(message);
                         LogInService.loggedinUsers.put(ctx.getSessionId(), oldvalue);
 
@@ -228,11 +231,6 @@ public class Main {
             ws.onMessage(ctx -> {
                 String message = ctx.message();
                 WebSocketHandler.createApplication(message);
-            });
-        });
-        app.ws("/data", ws -> {
-            ws.onMessage(ctx -> {
-
             });
         });
         app.get("/login", ctx -> {
@@ -270,9 +268,9 @@ public class Main {
                 uploadedFiles.add(uploadedFile);
                 String cookieID = ctx.cookie("id");
 
-                String id = cookies.get(cookieID);
+                String sessionID = cookies.get(cookieID);
 
-                User user = new UserService().getUserByName(LogInService.loggedinUsers.get(id));
+                User user = new UserService().getUserByName(LogInService.loggedinUsers.get(sessionID));
                 /*
                 EmailService.send(user.getEmail(), "Uploaded file on UploadServer", "Hi " + user.getName() + "! \n \n" +
                         "You just uploaded a file (" + uploadedFile.getFilename() + ") to the UploadServer system. \n " +
@@ -280,9 +278,13 @@ public class Main {
                         "Made by BytePhil.de");
 
                  */
+                Console.printout("User uploaded file (Session-ID: " + sessionID + " and FileName: " + uploadedFile.getFilename() + ")", MessageType.INFO);
+                try {
+                    new LogService().writetoFile(new File("logs/log.txt"), "User uploaded file (Session-ID: " + sessionID + " and FileName: " + uploadedFile.getFilename() + ")", MessageType.INFO);
+                } catch (IOException e) {e.printStackTrace();}
                 ctx.removeCookie("id");
                 ctx.removeCookie("id1");
-                ctx.redirect("/home?" + cookiesRenew.get(cookieID));
+                ctx.redirect("/home?" + cookiesRenew.get(cookieID) + "successful");        // Redirecting to the home page with current sessionID as Link
 
             });
         });
