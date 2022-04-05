@@ -43,14 +43,14 @@ public class Console {
     }
 
     public static void sendBanner() {
-        System.out.println("        ___                __      _____                          ");
-        System.out.println("       /   |  ____  ____  / /_  __/ ___/___  ______   _____  _____");
-        System.out.println("      / /| | / __ \\/ __ \\/ / / / /\\__ \\/ _ \\/ ___/ | / / _ \\/ ___/");
-        System.out.println("     / ___ |/ /_/ / /_/ / / /_/ /___/ /  __/ /   | |/ /  __/ /    ");
-        System.out.println("    /_/  |_/ .___/ .___/_/\\__, //____/\\___/_/    |___/\\___/_/     ");
-        System.out.println("          /_/   /_/      /____/                                   ");
+        System.out.println("   __  __      __                _______                          ");
+        System.out.println("  / / / /___  / /___  ____ _____/ / ___/___  ______   _____  _____");
+        System.out.println(" / / / / __ \\/ / __ \\/ __ `/ __  /\\__ \\/ _ \\/ ___/ | / / _ \\/ ___/");
+        System.out.println("/ /_/ / /_/ / / /_/ / /_/ / /_/ /___/ /  __/ /   | |/ /  __/ /    ");
+        System.out.println("\\____/ .___/_/\\____/\\__,_/\\__,_//____/\\___/_/    |___/\\___/_/ ");
+        System.out.println("    /_/           ");
         System.out.println(" ");
-        System.out.println("           Version: " + Main.getInstance().version + " | Made by BytePhil | https://bytephil.de/");
+        System.out.println("     UPLOADSERVER | Version: " + Main.getInstance().version + " | Made by BytePhil | https://bytephil.de/");
         System.out.println(" ");
     }
 

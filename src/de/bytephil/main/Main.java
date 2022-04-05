@@ -271,13 +271,13 @@ public class Main {
                 String sessionID = cookies.get(cookieID);
 
                 User user = new UserService().getUserByName(LogInService.loggedinUsers.get(sessionID));
-                /*
+
                 EmailService.send(user.getEmail(), "Uploaded file on UploadServer", "Hi " + user.getName() + "! \n \n" +
                         "You just uploaded a file (" + uploadedFile.getFilename() + ") to the UploadServer system. \n " +
                         "It is now stored at " + Main.config.address + ". Warning: This service may not be safe and is for personal use only! \n \n" +
                         "Made by BytePhil.de");
 
-                 */
+
                 Console.printout("User uploaded file (Session-ID: " + sessionID + " and FileName: " + uploadedFile.getFilename() + ")", MessageType.INFO);
                 try {
                     new LogService().writetoFile(new File("logs/log.txt"), "User uploaded file (Session-ID: " + sessionID + " and FileName: " + uploadedFile.getFilename() + ")", MessageType.INFO);
