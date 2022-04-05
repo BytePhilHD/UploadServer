@@ -138,6 +138,8 @@ public class Main {
 
         Main.app = app;
 
+        // LOGIN PAGE
+
         app.ws("/checklogin", ws -> {
             ws.onConnect(ctx -> {
                 Console.printout("[/websockets] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.DEBUG);
@@ -165,6 +167,8 @@ public class Main {
             });
         });
 
+        // HOME PAGE
+
         app.ws("/login", ws -> {
             ws.onConnect(ctx -> {
                 Console.printout("[/login] Client connected with Session-ID: " + ctx.getSessionId() + " IP: " + ctx.session.getRemoteAddress(), MessageType.DEBUG);
@@ -187,10 +191,13 @@ public class Main {
                         String id1 = ctx.cookie("id1");               // Changing the cookie value from null to the session id
                         cookiesRenew.replace(id1, ctx.getSessionId());
 
-
                         String username = getUsername(message);             // Getting
                         String rank = getRank(username);
                         ctx.send("IN*FO" + username + "|*|" + rank);
+
+                        String oldvalue = LogInService.loggedinUsers.get(message);
+                        LogInService.loggedinUsers.remove(message);
+                        LogInService.loggedinUsers.put(ctx.getSessionId(), oldvalue);
 
                     } else {
                         ctx.send("CLOSE");
@@ -261,16 +268,21 @@ public class Main {
                 FileUtil.streamToFile(uploadedFile.getContent(), "upload/" + time + "/" + uploadedFile.getFilename());
                 Console.printout("Saved file", MessageType.DEBUG);
                 uploadedFiles.add(uploadedFile);
+                String cookieID = ctx.cookie("id");
 
-                String id = cookies.get(ctx.cookie("id"));
+                String id = cookies.get(cookieID);
 
                 User user = new UserService().getUserByName(LogInService.loggedinUsers.get(id));
+                /*
                 EmailService.send(user.getEmail(), "Uploaded file on UploadServer", "Hi " + user.getName() + "! \n \n" +
                         "You just uploaded a file (" + uploadedFile.getFilename() + ") to the UploadServer system. \n " +
                         "It is now stored at " + Main.config.address + ". Warning: This service may not be safe and is for personal use only! \n \n" +
                         "Made by BytePhil.de");
 
-                ctx.redirect("/home?" + cookiesRenew.get(ctx.cookie("id")));
+                 */
+                ctx.removeCookie("id");
+                ctx.removeCookie("id1");
+                ctx.redirect("/home?" + cookiesRenew.get(cookieID));
 
             });
         });
