@@ -7,7 +7,11 @@ import de.bytephil.users.Application;
 import de.bytephil.users.ApplicationService;
 import de.bytephil.users.User;
 import de.bytephil.users.UserService;
+import io.javalin.core.util.FileUtil;
+import io.javalin.http.UploadedFile;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.List;
 
 public class ConsoleCommands {
@@ -69,6 +73,12 @@ public class ConsoleCommands {
             } else {
                 Console.printout("Usage: applies [list]", MessageType.WARNING);
             }
+        } else if (commandargs[0].toLowerCase().equalsIgnoreCase("test")) {
+            Console.printout("Test Command sent! Args: " + commandargs[1], MessageType.INFO);
+            //FileUtil.readFile(commandargs[1]);
+            String file = FileUtil.readFile(commandargs[1]);
+            Console.printout("TEXT: " + file, MessageType.INFO);
+
         } else {
             Console.printout("Unknown command! Type \"help\" for help!", MessageType.INFO);
         }

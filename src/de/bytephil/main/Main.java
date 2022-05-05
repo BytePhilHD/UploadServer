@@ -199,7 +199,7 @@ public class Main {
                         ctx.send("IN*FO" + username + "|*|" + rank);
 
                         String oldvalue = LogInService.loggedinUsers.get(message);              // Removing old sessionID key in case the user gets redirected (after upload) without the login screen
-                        LogInService.loggedinUsers.remove(message);
+                        //LogInService.loggedinUsers.remove(message);
                         LogInService.loggedinUsers.put(ctx.getSessionId(), oldvalue);
 
                     } else {
@@ -227,10 +227,9 @@ public class Main {
             });
         });
 
-        app.ws("/application", ws -> {
+        app.ws("/data", ws -> {
             ws.onMessage(ctx -> {
-                String message = ctx.message();
-                WebSocketHandler.createApplication(message);
+                ctx.send(uploadedFiles.get(0));
             });
         });
         app.get("/login", ctx -> {
@@ -259,24 +258,27 @@ public class Main {
         app.post("/upload", ctx -> {
             ctx.render("/public/home.html");
             ctx.uploadedFiles("files").forEach(uploadedFile -> {
+                String cookieID = ctx.cookie("id");
+                String sessionID = cookies.get(cookieID);
+                User user = new UserService().getUserByName(LogInService.loggedinUsers.get(sessionID));
+
                 String time = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
                 if (uploadedFile == null) {
                     return;
                 }
-                FileUtil.streamToFile(uploadedFile.getContent(), "upload/" + time + "/" + uploadedFile.getFilename());
+                String path = "upload/" + time + "-" + user.getName() + "/" + uploadedFile.getFilename();
+                FileUtil.streamToFile(uploadedFile.getContent(), path);
                 Console.printout("Saved file", MessageType.DEBUG);
                 uploadedFiles.add(uploadedFile);
-                String cookieID = ctx.cookie("id");
 
-                String sessionID = cookies.get(cookieID);
-
-                User user = new UserService().getUserByName(LogInService.loggedinUsers.get(sessionID));
-
+                /*
                 EmailService.send(user.getEmail(), "Uploaded file on UploadServer", "Hi " + user.getName() + "! \n \n" +
                         "You just uploaded a file (" + uploadedFile.getFilename() + ") to the UploadServer system. \n " +
                         "It is now stored at " + Main.config.address + ". Warning: This service may not be safe and is for personal use only! \n \n" +
                         "Made by BytePhil.de");
 
+                 */
+                Console.printout("TESTING: Your File path: " + path, MessageType.INFO);
 
                 Console.printout("User uploaded file (Session-ID: " + sessionID + " and FileName: " + uploadedFile.getFilename() + ")", MessageType.INFO);
                 try {
