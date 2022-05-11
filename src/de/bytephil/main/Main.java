@@ -269,7 +269,7 @@ public class Main {
                 String path = "upload/" + time + "-" + user.getName() + "/" + uploadedFile.getFilename();
                 FileUtil.streamToFile(uploadedFile.getContent(), path);
                 Console.printout("Saved file", MessageType.DEBUG);
-                uploadedFiles.add(uploadedFile);
+                //uploadedFiles.add(uploadedFile);
 
                 /*
                 EmailService.send(user.getEmail(), "Uploaded file on UploadServer", "Hi " + user.getName() + "! \n \n" +

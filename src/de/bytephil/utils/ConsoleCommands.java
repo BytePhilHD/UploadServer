@@ -2,16 +2,13 @@ package de.bytephil.utils;
 
 import de.bytephil.enums.MessageType;
 import de.bytephil.enums.Rank;
-import de.bytephil.main.Main;
 import de.bytephil.users.Application;
 import de.bytephil.users.ApplicationService;
 import de.bytephil.users.User;
 import de.bytephil.users.UserService;
 import io.javalin.core.util.FileUtil;
-import io.javalin.http.UploadedFile;
 
-import java.io.File;
-import java.io.InputStream;
+import java.io.*;
 import java.util.List;
 
 public class ConsoleCommands {
@@ -74,20 +71,37 @@ public class ConsoleCommands {
                 Console.printout("Usage: applies [list]", MessageType.WARNING);
             }
         } else if (commandargs[0].toLowerCase().equalsIgnoreCase("test")) {
-            Console.printout("Test Command sent! Args: " + commandargs[1], MessageType.INFO);
-            //FileUtil.readFile(commandargs[1]);
-            String file = FileUtil.readFile(commandargs[1]);
-            Console.printout("TEXT: " + file, MessageType.INFO);
+            if (commandargs.length == 2) {
+                String path = commandargs[1];
+                Console.printout("Test Command sent! Args: " + path, MessageType.INFO);
+                String file = FileUtil.readFile(path);
 
+                writeFile(path, file);
+            } else {
+                Console.printout("Usage: test [path]", MessageType.WARNING);
+            }
         } else {
             Console.printout("Unknown command! Type \"help\" for help!", MessageType.INFO);
+        }
+    }
+
+    // TODO Currently just working with text files
+    public void writeFile(String path, String text) {
+        try {
+            String filename = new File(path).getName();
+            File file = new File("test/" + filename);
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer.write(text);
+
+            writer.close();
+        } catch (Exception e1) {
+            Console.printout(e1.getMessage(), MessageType.ERROR);
         }
     }
 
     private void deleteUser(String commandargs) {
         User user = new UserService().getUserByName(commandargs);
         new UserService().removeUser(user);
-
     }
 
     private void createUser(String[] commandargs) {

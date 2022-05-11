@@ -28,9 +28,9 @@ public class Console {
     }
     public static void sendHelp() {
         empty();
-        System.out.println("                                ApplyServer HELP");
+        System.out.println("                                UploadServer HELP");
         Console.empty();
-        Console.printout("You are running ApplyServer version " + Main.getInstance().version, MessageType.INFO);
+        Console.printout("You are running UploadServer version " + Main.getInstance().version, MessageType.INFO);
         Console.empty();
     }
 
